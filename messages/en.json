@@ -1,0 +1,141 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "services": "Services",
+    "contact": "Contact",
+    "events": "Events",
+    "downloads": "Downloads"
+  },
+  "HomePage": {
+    "stats": {
+      "students": "10,000+",
+      "studentsLabel": "Students Served",
+      "provinces": "4+",
+      "provincesLabel": "Provinces Covered"
+    },
+    "hero": {
+      "intro": {
+        "title": "Shaping Futures Through",
+        "highlight": "Innovation & Integrity",
+        "description": "We support students and teachers with quality testing services and reliable resources.",
+        "buttonText": "Explore Upcoming Tests"
+      },
+      "results": {
+        "title": "Stay Updated with",
+        "highlight": " Your Newest Achievements",
+        "description": "See your test scores the moment they’re ready—no stress. Save or print them with just one click!",
+        "buttonText": "View Results"
+      },
+      "forms": {
+        "title": "Study Materials &",
+        "highlight": "Registration Forms",
+        "description": "Download test guides and forms to help you register and prepare effectively.",
+        "buttonText": "Download Resources"
+      },
+      "stats": {
+        "students": "10,000+",
+        "studentsLabel": "Students Served",
+        "provinces": "4+",
+        "provincesLabel": "Provinces Covered"
+      }
+    },
+    "Testimonials": {
+      "title": "What Our Students Say",
+      "subtitle": "Trusted by thousands of students across Pakistan",
+      "testimonials": {
+        "1": {
+          "quote": "AAZ Nextgen helped me achieve my dream score!",
+          "name": "Ali Khan",
+          "role": "Medical College Applicant"
+        },
+        "2": {
+          "quote": "The most reliable testing service I've used.",
+          "name": "Fatima Ahmed",
+          "role": "Engineering Student"
+        },
+        "3": {
+          "quote": "Quick results and transparent process.",
+          "name": "Usman Shah",
+          "role": "University Representative"
+        }
+      }
+    },
+
+    "KeyServices": {
+      "title": "Our Services",
+      "results": {
+        "title": "Test Results",
+        "description": "Instant access to verified score reports",
+        "buttonText": "View Sample"
+      },
+      "downloads": {
+        "title": "Forms & Brochures",
+        "description": "Download registration packets and syllabi",
+        "buttonText": "Browse Files"
+      },
+      "studyMaterials": {
+        "title": "Digital Library",
+        "description": "Thousands of TEST PDF resources ",
+        "buttonText": "Explore Library"
+      }
+    },
+
+    "FAQ": {
+      "title": "Frequently Asked Questions",
+      "subtitle": "Find answers to common queries about our testing services",
+      "ctaText": "Still have questions? Contact Us",
+      "questions": {
+        "1": "How do I check my test results?",
+        "2": "What documents do I need for registration?",
+        "3": "How long does it take to receive results?",
+        "4": "Can I retake the test if I'm not satisfied?",
+        "5": "What payment methods do you accept?",
+        "6": "How can I verify my test results?"
+      },
+      "answers": {
+        "1": "Results are available in your student portal 24 hours after test completion. You'll also receive an SMS notification.",
+        "2": "You need a scanned copy of your CNIC/B-Form and a recent passport-sized photograph in digital format.",
+        "3": "Most results are processed within 24 hours. During peak seasons, it may take up to 48 hours.",
+        "4": "Yes, you can retake the test after 30 days. Please check the retake policy in our downloads section.",
+        "5": "We accept credit/debit cards, bank transfers, and JazzCash/EasyPaisa mobile payments.",
+        "6": "All results include a unique verification code that can be checked on our website."
+      }
+    }
+  },
+
+  "Footer": {
+    "tagline": "Shaping Futures Through Innovation and Integrity",
+    "pages": {
+      "title": "Quick Links",
+      "home": "Home",
+      "about": "About",
+      "results": "Results",
+      "downloads": "Downloads",
+      "contact": "Contact"
+    },
+    "services": {
+      "title": "Our Services",
+      "student_portal": "Student Portal",
+      "test_prep": "Test Preparation",
+      "result_verification": "Result Verification",
+      "registration": "Registration"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "email": "info@aaznext.com",
+      "phone": "+92 300 1234567",
+      "address": "Lahore, Pakistan",
+      "hours": "Mon-Fri: 9AM - 5PM"
+    },
+    "copyright": "All rights reserved."
+  },
+  "Common": {
+    "upcomingEvents": "Upcoming Events",
+    "previous": "Previous",
+    "page": "Page",
+    "next": "Next",
+    "of": "of",
+    "viewDetails": "View Details"
+  }
+}
