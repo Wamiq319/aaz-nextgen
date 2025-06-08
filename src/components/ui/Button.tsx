@@ -37,13 +37,14 @@ export const Button = ({
     "inline-flex items-center justify-center font-medium transition-all duration-200 whitespace-nowrap shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500";
 
   const variants = {
-    primary: "bg-[#1A365D] hover:bg-[#122A47] text-white",
-    secondary: "bg-[#E0F2FE] hover:bg-[#BFDBFE] text-[#1A365D]",
-    outline: "border border-gray-300 text-[#1A365D] hover:bg-[#F8FAFC]",
-    red: "bg-[#FF3B30] hover:bg-[#E5352B] text-white",
+    primary:
+      "bg-gradient-to-r from-[#6B21A8] to-[#D63384] text-white hover:from-[#D63384] hover:to-[#6B21A8]",
+    secondary: "bg-pink-100 hover:bg-pink-200 text-[#6B21A8]",
+    outline: "border border-pink-400 text-pink-700 hover:bg-pink-50",
+    red: "bg-gradient-to-r from-[#D63384] to-[#EF4444] text-white hover:from-[#EF4444] hover:to-[#D63384]",
     dark: "bg-[#1F2937] hover:bg-[#111827] text-white",
     "outline-red": "border border-[#EF4444] text-[#EF4444] hover:bg-red-50",
-    "outline-blue": "border border-[#1A365D] text-[#1A365D] hover:bg-blue-50",
+    "outline-blue": "border border-[#6B21A8] text-[#6B21A8] hover:bg-purple-50",
   };
 
   const sizes = {

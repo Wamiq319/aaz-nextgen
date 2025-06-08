@@ -88,7 +88,7 @@ export const HeroSection = () => {
               className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/30 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#6B21A8]/90 via-[#6B21A8]/30 to-transparent" />
           </div>
         ))}
       </div>
@@ -112,7 +112,7 @@ export const HeroSection = () => {
               <div className="w-full max-w-md text-center">
                 <h1 className="text-3xl font-bold text-white leading-tight mb-4">
                   {t(`${slide.key}.title`)}{" "}
-                  <span className="text-[#EF4444]">
+                  <span className="text-[#F472B6]">
                     {t(`${slide.key}.highlight`)}
                   </span>
                 </h1>
@@ -126,7 +126,7 @@ export const HeroSection = () => {
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
                   onClick={() => scrollToSection(slide.scrollTo)}
-                  className="w-full max-w-xs mx-auto"
+                  className="w-full max-w-xs mx-auto bg-[#EF4444] hover:bg-[#D63384]"
                 >
                   {t(`${slide.key}.buttonText`)}
                   <ArrowDown size={16} />
@@ -138,9 +138,9 @@ export const HeroSection = () => {
             <div className="hidden md:flex w-full h-full">
               {/* Text Content - Always on left */}
               <div className="w-1/2 px-12 py-10 flex flex-col justify-center items-start bg-white">
-                <h1 className="text-5xl font-bold text-[#1A365D] mb-4 leading-tight">
+                <h1 className="text-5xl font-bold text-[#6B21A8] mb-4 leading-tight">
                   {t(`${slide.key}.title`)}{" "}
-                  <span className="text-[#EF4444]">
+                  <span className="text-[#D63384]">
                     {t(`${slide.key}.highlight`)}
                   </span>
                 </h1>
@@ -154,29 +154,30 @@ export const HeroSection = () => {
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
                   onClick={() => scrollToSection(slide.scrollTo)}
+                  className="bg-[#6B21A8] hover:bg-[#7E3BA8]"
                 >
                   {t(`${slide.key}.buttonText`)}
                   {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
                 </Button>
                 <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
                   <StatCard
-                    value={t("stats.students")}
-                    label={t("stats.studentsLabel")}
-                    icon={<Users size={18} />}
-                    variant="accent"
+                    value={t("stats.provinces")}
+                    label={t("stats.provincesLabel")}
+                    icon={<MapPin size={18} />}
+                    variant="primary"
                   />
                   <StatCard
                     value={t("stats.provinces")}
                     label={t("stats.provincesLabel")}
                     icon={<MapPin size={18} />}
-                    variant="primary"
+                    variant="secondary"
                   />
                 </div>
               </div>
 
               {/* Image - Always on right */}
               <div className="relative w-1/2 h-[80vh] pr-8 flex items-center justify-center">
-                <div className="relative w-[75%] h-[95%] rounded-2xl mt-6 overflow-hidden shadow-lg">
+                <div className="relative w-[75%] h-[95%] rounded-2xl mt-6 overflow-hidden shadow-lg border-4 border-[#6B21A8]/20">
                   <Image
                     src={slide.image}
                     alt={t(`${slide.key}.title`)}
@@ -199,7 +200,7 @@ export const HeroSection = () => {
             onClick={() => goToSlide(index)}
             className={`transition-all duration-300 cursor-pointer ${
               current === index
-                ? "w-8 h-2 rounded-full bg-[#EF4444]"
+                ? "w-8 h-2 rounded-full bg-[#F472B6]"
                 : "w-3 h-3 rounded-full bg-gray-300"
             }`}
             aria-label={`Go to slide ${index + 1}`}

@@ -31,15 +31,19 @@ export const TestimonialsSection = () => {
   ];
 
   return (
-    <section className="py-20 bg-[#1F2937]">
+    <section className="py-20 bg-[#FCE7F3]">
       {" "}
-      {/* Dark blue background */}
+      {/* Light pink background */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#6B21A8] mb-4">
+            {" "}
+            {/* Deep purple */}
             {t("title")}
           </h2>
-          <p className="text-lg text-[#D1D5DB] max-w-2xl mx-auto">
+          <p className="text-lg text-[#6B21A8]/80 max-w-2xl mx-auto">
+            {" "}
+            {/* Semi-transparent purple */}
             {t("subtitle")}
           </p>
         </div>
@@ -48,18 +52,17 @@ export const TestimonialsSection = () => {
           {testimonials.map((testimonial) => (
             <div
               key={testimonial.id}
-              className="bg-[#EF4444]/10 backdrop-blur-lg rounded-xl p-8 border border-[#EF4444]/20 shadow-lg hover:shadow-xl transition-all"
-              style={{
-                background:
-                  "linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, rgba(31, 41, 55, 0.4) 100%)",
-              }}
+              className="bg-white rounded-xl p-8 border border-[#F472B6]/30 shadow-sm hover:shadow-md transition-all"
             >
-              <div className="mb-6 text-[#EF4444]">
-                <Quote className="h-8 w-8 opacity-80" />
+              <div className="mb-6 text-[#D63384]">
+                {" "}
+                {/* Dark pink */}
+                <Quote className="h-8 w-8" />
               </div>
 
-              <p className="text-lg text-white mb-6 italic">
-                "{testimonial.quote}"
+              <p className="text-lg text-[#4B5563] mb-6 italic">
+                {" "}
+                {/* Gray text */}"{testimonial.quote}"
               </p>
 
               <div className="flex items-center mb-2">
@@ -68,16 +71,22 @@ export const TestimonialsSection = () => {
                     key={i}
                     className={`h-5 w-5 ${
                       i < testimonial.rating
-                        ? "text-[#EF4444] fill-[#EF4444]/40" // Red stars with low opacity fill
-                        : "text-gray-500"
+                        ? "text-[#D63384] fill-[#D63384]/30" /* Dark pink with light fill */
+                        : "text-gray-300"
                     }`}
                   />
                 ))}
               </div>
 
               <div>
-                <p className="font-semibold text-white">{testimonial.name}</p>
-                <p className="text-sm text-[#9CA3AF]">{testimonial.role}</p>
+                <p className="font-semibold text-[#6B21A8]">
+                  {testimonial.name}
+                </p>{" "}
+                {/* Deep purple */}
+                <p className="text-sm text-[#6B7280]">
+                  {testimonial.role}
+                </p>{" "}
+                {/* Light gray */}
               </div>
             </div>
           ))}

@@ -8,16 +8,10 @@
     "downloads": "Downloads"
   },
   "HomePage": {
-    "stats": {
-      "students": "10,000+",
-      "studentsLabel": "Students Served",
-      "provinces": "4+",
-      "provincesLabel": "Provinces Covered"
-    },
     "hero": {
       "intro": {
-        "title": "Shaping Futures Through",
-        "highlight": "Innovation & Integrity",
+        "title": "Fueling Ambition  ",
+        "highlight": "Through  Modern Learning.",
         "description": "We support students and teachers with quality testing services and reliable resources.",
         "buttonText": "Explore Upcoming Tests"
       },
@@ -39,6 +33,14 @@
         "provinces": "4+",
         "provincesLabel": "Provinces Covered"
       }
+    },
+    "QuickIntro": {
+      "title": "About AAZ Nextgen",
+      "intro": "We're where innovation meets education, designed to spark curiosity and empower learners through technology-enhanced experiences.",
+      "missionTitle": "Our Mission",
+      "mission": "Igniting intellectual curiosity with dynamic, tech-driven learning solutions.",
+      "visionTitle": "Our Vision",
+      "vision": "A globally trusted hub where pedagogy meets digital transformation."
     },
     "Testimonials": {
       "title": "What Our Students Say",
@@ -100,6 +102,37 @@
         "4": "Yes, you can retake the test after 30 days. Please check the retake policy in our downloads section.",
         "5": "We accept credit/debit cards, bank transfers, and JazzCash/EasyPaisa mobile payments.",
         "6": "All results include a unique verification code that can be checked on our website."
+      }
+    }
+  },
+  "AboutPage": {
+    "heroTitle": "About AAZ Nextgen",
+    "heroSubtitle": "Fueling ambition through modern learning",
+    "whoWeAreTitle": "Who We Are",
+    "whoWeAreContent": "At AAZ Nextgen, we believe that education should not only inform—but inspire. Guided by our tagline, <strong>Fueling Ambition Through Modern Learning</strong>, we are a next-generation educational platform committed to empowering learners through innovation, challenge, and personalized growth.\n\nWhether you're a student seeking to test your knowledge or a lifelong learner aiming for intellectual excellence, AAZ Nextgen offers dynamic, technology-enhanced tools and assessments tailored to diverse needs and age groups.\n\nRooted in a mission to ignite curiosity and elevate potential, and driven by a vision to become a globally trusted hub of academic distinction, AAZ Nextgen is where passion meets progress—and futures are built.",
+    "taglineTitle": "Our Philosophy",
+    "tagline": "Fueling Ambition Through Modern Learning",
+    "missionTitle": "Our Mission",
+    "missionStatement": "At AAZ Nextgen, our mission is to ignite intellectual curiosity and elevate potential through innovative, technology-driven learning experiences.",
+    "visionTitle": "Our Vision",
+    "visionStatement": "To become a globally trusted hub of academic distinction where cutting-edge pedagogy meets digital transformation.",
+    "uniqueTitle": "What Makes Us Unique",
+    "unique": {
+      "innovation": {
+        "title": "Innovation-driven",
+        "description": "Harnessing cutting-edge technology to transform traditional learning paradigms."
+      },
+      "personalized": {
+        "title": "Personalized learning",
+        "description": "Tailored educational experiences that adapt to individual learning styles."
+      },
+      "challenge": {
+        "title": "Challenge-based education",
+        "description": "Stimulating intellectual growth through thoughtfully designed challenges."
+      },
+      "confidence": {
+        "title": "Confidence-focused growth",
+        "description": "Building self-assurance through measurable achievement and progress."
       }
     }
   },

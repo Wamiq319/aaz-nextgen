@@ -19,19 +19,18 @@ export const StatCard = ({
   className = "",
 }: StatCardProps) => {
   const variants = {
-    primary: "bg-blue-50 text-blue-800",
-    secondary: "bg-purple-50 text-purple-800",
-    accent: "bg-red-50 text-red-800",
+    primary: "bg-[#FCE7F3] text-[#D63384]",
+    secondary: "bg-[#E9D5FF] text-[#6B21A8]",
+    accent: "bg-[#FEE2E2] text-[#EF4444]",
     neutral: "bg-gray-50 text-gray-800",
   };
 
   const iconColors = {
-    primary: "text-blue-600",
-    secondary: "text-purple-600",
-    accent: "text-red-600",
+    primary: "text-[#D63384]",
+    secondary: "text-[#6B21A8]",
+    accent: "text-[#EF4444]",
     neutral: "text-gray-600",
   };
-
   return (
     <div
       className={`p-4 rounded-xl shadow-sm transition-all duration-300 hover:shadow-md ${variants[variant]} ${className}`}
