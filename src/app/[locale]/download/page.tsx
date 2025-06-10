@@ -230,7 +230,7 @@ export default function DownloadsPage() {
                 { label: "Description", value: download.description },
                 { label: "Category", value: download.category },
                 { label: "UploadDate", value: download.uploadDate },
-                { label: "grade", value: download.grades.join(", ") },
+                { label: "Grade", value: download.grades.join(", ") },
               ]}
               buttonText="Download"
               onButtonClick={handleDownload}

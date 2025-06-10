@@ -159,7 +159,11 @@ export default function EventResultsPage() {
                 data={[
                   { label: "Roll No", value: result.examData.rollNumber },
                   { label: "Position", value: `#${result.examData.position}` },
-                  { label: "Grade", value: `Grade ${result.student.grade}` },
+                  {
+                    label: "Grade",
+                    value: result.student.grade,
+                    className: "font-bold",
+                  },
                   {
                     label: "Score",
                     value: `${result.examData.score}%`,

@@ -9,7 +9,7 @@
       "fileSize": "4.2 MB",
       "downloadUrl": "/assets/pdf/past-papers-2023.pdf",
       "uploadDate": "2024-01-15",
-      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+      "grades": ["10", "11", "12"]
     },
     {
       "id": "2",
@@ -29,9 +29,9 @@
       "category": "Forms",
       "fileType": "PDF",
       "fileSize": "0.5 MB",
-      "downloadUrl": "/assets/pdf/science-olympiad-form.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2024-03-05",
-      "grades": ["Grade 9", "Grade 10", "Grade 11"]
+      "grades": ["9", "10", "11"]
     },
     {
       "id": "4",
@@ -40,9 +40,9 @@
       "category": "Reference Books",
       "fileType": "PDF",
       "fileSize": "12.1 MB",
-      "downloadUrl": "/assets/pdf/math-reference.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2024-01-30",
-      "grades": ["Grade 11", "Grade 12"]
+      "grades": ["11", "12"]
     },
     {
       "id": "5",
@@ -51,9 +51,9 @@
       "category": "Past Papers",
       "fileType": "PDF",
       "fileSize": "3.9 MB",
-      "downloadUrl": "/assets/pdf/past-papers-2022.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2023-12-10",
-      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+      "grades": ["10", "11", "12"]
     },
     {
       "id": "6",
@@ -62,7 +62,7 @@
       "category": "Brochures",
       "fileType": "PDF",
       "fileSize": "2.3 MB",
-      "downloadUrl": "/assets/pdf/school-brochure-2024.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2024-01-10",
       "grades": ["All Grades"]
     },
@@ -73,9 +73,9 @@
       "category": "Books",
       "fileType": "PDF",
       "fileSize": "6.7 MB",
-      "downloadUrl": "/assets/pdf/literature-anthology.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2024-02-15",
-      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+      "grades": ["10", "11", "12"]
     },
     {
       "id": "8",
@@ -84,7 +84,7 @@
       "category": "Forms",
       "fileType": "PDF",
       "fileSize": "0.3 MB",
-      "downloadUrl": "/assets/pdf/sports-day-form.pdf",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
       "uploadDate": "2024-03-01",
       "grades": ["All Grades"]
     }

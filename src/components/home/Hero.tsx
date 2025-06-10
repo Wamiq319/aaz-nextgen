@@ -17,6 +17,7 @@ import {
   ArrowDown,
   Users,
   MapPin,
+  User,
 } from "lucide-react";
 
 const slides = [
@@ -112,7 +113,7 @@ export const HeroSection = () => {
               <div className="w-full max-w-md text-center">
                 <h1 className="text-3xl font-bold text-white leading-tight mb-4">
                   {t(`${slide.key}.title`)}{" "}
-                  <span className="text-[#F472B6]">
+                  <span className="text-[#ff0084]">
                     {t(`${slide.key}.highlight`)}
                   </span>
                 </h1>
@@ -129,7 +130,7 @@ export const HeroSection = () => {
                   className="w-full max-w-xs mx-auto bg-[#EF4444] hover:bg-[#D63384]"
                 >
                   {t(`${slide.key}.buttonText`)}
-                  <ArrowDown size={16} />
+                  <ArrowRight size={16} />
                 </Button>
               </div>
             </div>
@@ -161,10 +162,10 @@ export const HeroSection = () => {
                 </Button>
                 <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
                   <StatCard
-                    value={t("stats.provinces")}
-                    label={t("stats.provincesLabel")}
-                    icon={<MapPin size={18} />}
-                    variant="primary"
+                    value={t("stats.students")}
+                    label={t("stats.studentsLabel")}
+                    icon={<User size={18} />}
+                    variant="accent"
                   />
                   <StatCard
                     value={t("stats.provinces")}

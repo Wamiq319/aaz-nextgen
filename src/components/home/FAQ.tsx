@@ -1,7 +1,7 @@
 // components/FAQSection.tsx
 "use client";
 
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "../ui/Button";
@@ -73,7 +73,7 @@ export const FAQSection = () => {
             className="mx-auto"
           >
             {t("ctaText")}
-            <ChevronDown className="ml-2 h-4 w-4" />
+            <ArrowRight />
           </Button>
         </div>
       </div>
