@@ -25,8 +25,8 @@ export const Footer = () => {
   const pages = [
     { name: "home", icon: <Home size={16} />, href: "/" },
     { name: "about", icon: <Info size={16} />, href: "/about" },
-    { name: "results", icon: <Award size={16} />, href: "/results" },
-    { name: "downloads", icon: <FileText size={16} />, href: "/downloads" },
+    { name: "results", icon: <Award size={16} />, href: "/result" },
+    { name: "downloads", icon: <FileText size={16} />, href: "/download" },
     { name: "contact", icon: <Phone size={16} />, href: "/contact" },
   ];
 

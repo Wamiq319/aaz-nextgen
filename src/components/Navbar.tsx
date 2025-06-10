@@ -37,7 +37,7 @@ export default function Navbar() {
             <Image
               src="/assets/images/logo.png"
               alt="Logo"
-              className="h-10 w-auto"
+              className="h-15 w-auto"
               width={48}
               height={48}
               priority
