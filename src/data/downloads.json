@@ -1,0 +1,92 @@
+{
+  "downloads": [
+    {
+      "id": "1",
+      "title": "2023 Past Papers Collection",
+      "description": "Complete set of past papers from 2023 exams",
+      "category": "Past Papers",
+      "fileType": "PDF",
+      "fileSize": "4.2 MB",
+      "downloadUrl": "/assets/pdf/past-papers-2023.pdf",
+      "uploadDate": "2024-01-15",
+      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+    },
+    {
+      "id": "2",
+      "title": "Student Guidebook 2024",
+      "description": "Comprehensive guide for students covering all subjects",
+      "category": "Guide Books",
+      "fileType": "PDF",
+      "fileSize": "8.5 MB",
+      "downloadUrl": "/assets/pdf/guidebook-2024.pdf",
+      "uploadDate": "2024-02-20",
+      "grades": ["All Grades"]
+    },
+    {
+      "id": "3",
+      "title": "Science Olympiad Registration Form",
+      "description": "Official registration form for the 2024 Science Olympiad",
+      "category": "Forms",
+      "fileType": "PDF",
+      "fileSize": "0.5 MB",
+      "downloadUrl": "/assets/pdf/science-olympiad-form.pdf",
+      "uploadDate": "2024-03-05",
+      "grades": ["Grade 9", "Grade 10", "Grade 11"]
+    },
+    {
+      "id": "4",
+      "title": "Mathematics Reference Book",
+      "description": "Reference material for advanced mathematics",
+      "category": "Reference Books",
+      "fileType": "PDF",
+      "fileSize": "12.1 MB",
+      "downloadUrl": "/assets/pdf/math-reference.pdf",
+      "uploadDate": "2024-01-30",
+      "grades": ["Grade 11", "Grade 12"]
+    },
+    {
+      "id": "5",
+      "title": "2022 Past Papers Collection",
+      "description": "Complete set of past papers from 2022 exams",
+      "category": "Past Papers",
+      "fileType": "PDF",
+      "fileSize": "3.9 MB",
+      "downloadUrl": "/assets/pdf/past-papers-2022.pdf",
+      "uploadDate": "2023-12-10",
+      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+    },
+    {
+      "id": "6",
+      "title": "School Brochure 2024",
+      "description": "Official school brochure with program information",
+      "category": "Brochures",
+      "fileType": "PDF",
+      "fileSize": "2.3 MB",
+      "downloadUrl": "/assets/pdf/school-brochure-2024.pdf",
+      "uploadDate": "2024-01-10",
+      "grades": ["All Grades"]
+    },
+    {
+      "id": "7",
+      "title": "Literature Anthology",
+      "description": "Collection of recommended literature for English classes",
+      "category": "Books",
+      "fileType": "PDF",
+      "fileSize": "6.7 MB",
+      "downloadUrl": "/assets/pdf/literature-anthology.pdf",
+      "uploadDate": "2024-02-15",
+      "grades": ["Grade 10", "Grade 11", "Grade 12"]
+    },
+    {
+      "id": "8",
+      "title": "Sports Day Permission Slip",
+      "description": "Required form for student participation in Sports Day",
+      "category": "Forms",
+      "fileType": "PDF",
+      "fileSize": "0.3 MB",
+      "downloadUrl": "/assets/pdf/sports-day-form.pdf",
+      "uploadDate": "2024-03-01",
+      "grades": ["All Grades"]
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "eventId": "RME2023",
+    "eventName": "Rainbow Mega Event 2023",
+    "examDate": "2023-11-15",
+    "city": "Islamabad",
+    "category": "ART",
+    "grades": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+    "isPublished": true
+  },
+  {
+    "eventId": "MCAT2023",
+    "eventName": "MCAT Challenge 2023",
+    "examDate": "2023-09-10",
+    "city": "Islamabad",
+    "category": "Biology",
+    "grades": ["11", "12"],
+    "isPublished": true
+  },
+  {
+    "eventId": "MATH2023",
+    "eventName": "Math Olympiad 2023",
+    "examDate": "2023-08-20",
+    "city": "Lahore",
+    "category": "Junior",
+    "grades": ["5", "6", "7", "8", "9", "10", "11", "12"],
+    "isPublished": true
+  },
+  {
+    "eventId": "SCI2023",
+    "eventName": "Science Fair 2023",
+    "examDate": "2023-10-05",
+    "city": "Karachi",
+    "category": "Physics",
+    "grades": ["7", "8", "9", "10", "11", "12"],
+    "isPublished": true
+  },
+  {
+    "eventId": "ENG2023",
+    "eventName": "English Spelling Bee 2023",
+    "examDate": "2023-07-25",
+    "city": "Peshawar",
+    "category": "Linguistics",
+    "grades": ["3", "4", "5", "6", "7", "8"],
+    "isPublished": true
+  },
+  {
+    "eventId": "CS2023",
+    "eventName": "Coding Sprint 2023",
+    "examDate": "2023-12-01",
+    "city": "Lahore",
+    "category": "Computer Science",
+    "grades": ["9", "10", "11", "12"],
+    "isPublished": false
+  },
+  {
+    "eventId": "HIST2023",
+    "eventName": "History Bowl 2023",
+    "examDate": "2023-10-30",
+    "city": "Karachi",
+    "category": "Social Studies",
+    "grades": ["6", "7", "8", "9", "10"],
+    "isPublished": true
+  }
+]

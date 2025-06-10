@@ -9,8 +9,8 @@ import { useState } from "react";
 
 const NAV_ITEMS = [
   { path: "home", key: "home" },
-  { path: "events", key: "events" },
-  { path: "downloads", key: "downloads" },
+  { path: "result", key: "result" },
+  { path: "download", key: "download" },
   { path: "about", key: "about" },
   { path: "contact", key: "contact" },
 ] as const;

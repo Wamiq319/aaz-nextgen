@@ -2,10 +2,9 @@
   "nav": {
     "home": "Home",
     "about": "About",
-    "services": "Services",
     "contact": "Contact",
-    "events": "Events",
-    "downloads": "Downloads"
+    "result": "Results",
+    "download": "Downloads"
   },
   "HomePage": {
     "hero": {
