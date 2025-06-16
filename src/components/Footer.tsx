@@ -174,19 +174,11 @@ export const Footer = () => {
         </div>
 
         {/* Copyright and Designer Credit */}
-        <div className="border-t border-[#EF4444]/20 mt-12 pt-8 text-center">
-          <div className="bg-[#EF4444]/10 text-[#EF4444] py-6 rounded-lg">
-            <p className="mb-3 text-lg">
-              &copy; {currentYear} AAZ Nextgen Testing Service. {t("copyright")}
-            </p>
-            <div className="flex items-center justify-center gap-2 font-mono text-sm tracking-wider">
-              <Code2 size={16} className="animate-pulse" />
-              <span>Design & Develop by</span>
-              <span className="bg-gradient-to-r from-[#EF4444] to-[#F97316] bg-clip-text text-transparent font-bold">
-                WλM!QΞ://dev
-              </span>
-              <Palette size={16} className="animate-pulse" />
-            </div>
+        <div className="border-t border-[#EF4444]/20 mt-12 pt-6 text-center">
+          <div dir="ltr" className="text-xs text-gray-400">
+            © 2025 Wamiq. All rights reserved. Licensed to AAZ Nextgen. Design &
+            Develop by{" "}
+            <span className="text-[#EF4444] font-medium">WλM!QΞ://dev</span>
           </div>
         </div>
       </div>

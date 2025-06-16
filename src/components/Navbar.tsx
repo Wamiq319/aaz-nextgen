@@ -26,8 +26,8 @@ export default function Navbar() {
   const isActive = (path: string) => {
     const basePath = `/${locale}${path === "home" ? "" : `/${path}`}`;
     return pathname === basePath
-      ? "bg-gradient-to-r from-red-50 to-red-100 text-[#EF4444] font-semibold" // Added gradient background
-      : "text-[#1A365D] hover:text-[#EF4444]"; // Added hover color
+      ? "bg-gradient-to-r from-red-50 to-red-100 text-[#EF4444] font-semibold"
+      : "text-[#1A365D] hover:text-[#EF4444]";
   };
 
   return (
@@ -38,11 +38,11 @@ export default function Navbar() {
           <Link
             href={`/${locale}`}
             className="flex-shrink-0 flex items-center space-x-2"
-            aria-label="Home"
+            aria-label={t("home")}
           >
             <Image
               src="/assets/images/logo.png"
-              alt="Logo"
+              alt={t("home")}
               className="h-16 w-auto animate-pulse hover:animate-none"
               width={64}
               height={64}
@@ -50,10 +50,10 @@ export default function Navbar() {
             />
             <div className="flex flex-col">
               <span className="text-[#1A365D] font-bold text-xl tracking-wider">
-                AAZ Next-gen
+                {t("brand")}
               </span>
               <span className="text-[#EF4444] text-sm font-medium tracking-wide">
-                Ignite Minds,Elevate Futures
+                {t("slogan")}
               </span>
             </div>
           </Link>
@@ -96,7 +96,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-[#1A365D] hover:text-[#EF4444] focus:outline-none"
-              aria-label="Toggle menu"
+              aria-label={t("menu")}
             >
               <svg
                 className="h-6 w-6"
