@@ -8,7 +8,7 @@ export const QuickIntroSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-4">
+      <div className="max-w-6xl mx-auto px-2 sm:px-4">
         {/* Intro Block */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#6B21A8] mb-6">
@@ -20,10 +20,9 @@ export const QuickIntroSection = () => {
         </div>
 
         {/* Mission & Vision Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mx-4 md:mx-0">
-          {/* Mission */}
-          <div className="bg-[#F9FAFB] p-8 rounded-xl border border-[#F472B6]/30 hover:border-[#6B21A8]/50 transition-all">
-            <div className="flex gap-5 items-start">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-8">
+          <div className="bg-[#F9FAFB] p-6 sm:p-8 rounded-xl border border-[#F472B6]/30 hover:border-[#6B21A8]/50 transition-all">
+            <div className="flex gap-4 sm:gap-5 items-start">
               <div className="p-3 bg-[#6B21A8] rounded-lg text-white flex-shrink-0">
                 <Rocket className="h-6 w-6" />
               </div>
@@ -35,10 +34,9 @@ export const QuickIntroSection = () => {
               </div>
             </div>
           </div>
-
           {/* Vision */}
-          <div className="bg-[#F9FAFB] p-8 rounded-xl border border-[#F472B6]/30 hover:border-[#6B21A8]/50 transition-all">
-            <div className="flex gap-5 items-start">
+          <div className="bg-[#F9FAFB] p-6 sm:p-8 rounded-xl border border-[#F472B6]/30 hover:border-[#6B21A8]/50 transition-all">
+            <div className="flex gap-4 sm:gap-5 items-start">
               <div className="p-3 bg-[#D63384] rounded-lg text-white flex-shrink-0">
                 <Globe className="h-6 w-6" />
               </div>
