@@ -1,5 +1,7 @@
 {
   "nav": {
+    "brand": "AAZ Next-gen",
+    "slogan": "Ignite Minds,Elevate Futures",
     "home": "Home",
     "about": "About",
     "contact": "Contact",
@@ -299,9 +301,7 @@
       "phone": "+92 312 0854931",
       "address": "Gulistan Colony, Lane #3, House #217, Rawalpindi",
       "hours": "Mon-Fri: 9AM - 5PM"
-    },
-    "copyright": "All rights reserved.",
-    "designedBy": "Designed by WλM!QΞ://dev"
+    }
   },
   "Common": {
     "upcomingEvents": "Upcoming Events",

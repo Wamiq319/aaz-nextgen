@@ -26,21 +26,21 @@ const slides = [
     key: "intro",
     scrollTo: "contests",
     icon: <Calendar size={18} />,
-    image: "/assets/images/hero-intro.png",
+    image: "/assets/images/hero/hero-intro1.jpeg",
   },
   {
     id: 2,
     key: "results",
     scrollTo: "result",
     icon: <Award size={18} />,
-    image: "/assets/images/hero-intro.png",
+    image: "/assets/images/hero/hero-intro2.jpeg",
   },
   {
     id: 3,
     key: "forms",
     scrollTo: "download",
     icon: <FileText size={18} />,
-    image: "/assets/images/hero-intro.png",
+    image: "/assets/images/hero/hero-intro3.jpeg",
   },
 ];
 

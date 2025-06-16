@@ -17,31 +17,37 @@ const contestDetails = [
     name: "NoorQuest",
     icon: <Moon size={24} />,
     color: "#F59E0B",
+    imageUrl: "/assets/images/contest/noorquest.jpeg",
   },
   {
     name: "CodeNova",
     icon: <Code size={24} />,
     color: "#3B82F6",
+    imageUrl: "/assets/images/contest/codenova.jpeg",
   },
   {
     name: "NuminaX",
     icon: <Divide size={24} />,
     color: "#10B981",
+    imageUrl: "/assets/images/contest/numinax.png",
   },
   {
     name: "InkspireChronicles",
     icon: <PenTool size={24} />,
     color: "#EC4899",
+    imageUrl: "/assets/images/contest/inkspirechronicles.jpeg",
   },
   {
     name: "NovaMind",
     icon: <FlaskConical size={24} />,
     color: "#8B5CF6",
+    imageUrl: "/assets/images/contest/novamind.jpeg",
   },
   {
     name: "VisionVerse",
     icon: <Paintbrush size={24} />,
     color: "#F97316",
+    imageUrl: "/assets/images/contest/visionverse.png",
   },
 ];
 
@@ -49,15 +55,15 @@ export default function ContestPage() {
   const t = useTranslations("ContestPage");
 
   return (
-    <section className="container mx-auto py-20 px-4">
-      <h1 className="text-4xl font-bold text-center text-[#6B21A8] mb-6">
+    <section className="container mx-auto py-12 px-4">
+      <h1 className="text-4xl font-bold text-center text-[#6B21A8] mb-4">
         {t("title")}
       </h1>
-      <p className="text-center text-gray-600 max-w-2xl mx-auto mb-12">
+      <p className="text-center text-gray-600 max-w-2xl mx-auto mb-8">
         {t("description")}
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {contestDetails.map((contest, index) => (
           <ContestCard
             key={index}
@@ -73,6 +79,7 @@ export default function ContestPage() {
             variant="full"
             className="animate-fadeIn"
             style={{ animationDelay: `${index * 100}ms` }}
+            imageUrl={contest.imageUrl}
           />
         ))}
       </div>

@@ -3,6 +3,7 @@
 import { Button } from "./Button";
 import { ArrowRight } from "lucide-react";
 import { ReactNode } from "react";
+import Image from "next/image";
 
 interface ContestCardProps {
   title: string;
@@ -18,6 +19,7 @@ interface ContestCardProps {
   variant?: "preview" | "full";
   className?: string;
   style?: React.CSSProperties;
+  imageUrl?: string;
 }
 
 export const ContestCard = ({
@@ -34,6 +36,7 @@ export const ContestCard = ({
   variant = "preview",
   className = "",
   style,
+  imageUrl,
 }: ContestCardProps) => {
   return (
     <div
@@ -42,10 +45,23 @@ export const ContestCard = ({
     >
       <div className="absolute inset-0 bg-gradient-to-br from-[#6B21A8]/10 to-transparent opacity-70 group-hover:opacity-100 transition-opacity duration-300"></div>
 
-      <div className="relative p-6 z-10">
-        <div className="flex items-center gap-3 mb-4">
+      {imageUrl && (
+        <div className="relative w-full aspect-[4/3] overflow-hidden">
+          <Image
+            src={imageUrl}
+            alt={title}
+            fill
+            className="object-cover object-center"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            priority
+          />
+        </div>
+      )}
+
+      <div className="relative p-4 z-10">
+        <div className="flex items-center gap-3 mb-3">
           <div
-            className="w-10 h-10 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
+            className="w-8 h-8 flex items-center justify-center rounded-full transition-all duration-300 group-hover:scale-110 group-hover:rotate-12"
             style={{
               backgroundColor: `${color}20`,
               border: `2px solid ${color}`,
@@ -55,15 +71,15 @@ export const ContestCard = ({
               {icon}
             </div>
           </div>
-          <h3 className="text-2xl font-bold text-[#6B21A8] transition-transform duration-300 group-hover:scale-105">
+          <h3 className="text-xl font-bold text-[#6B21A8] transition-transform duration-300 group-hover:scale-105">
             {title}
           </h3>
         </div>
 
-        <p className="text-gray-600 mb-4">{description}</p>
+        <p className="text-gray-600 text-sm mb-3">{description}</p>
 
         {variant === "full" && (
-          <ul className="text-sm text-gray-700 space-y-1 mb-4">
+          <ul className="text-xs text-gray-700 space-y-1 mb-3">
             {levels && (
               <li>
                 <strong>Eligible Levels:</strong> {levels}
@@ -91,12 +107,12 @@ export const ContestCard = ({
           <Button
             variant="outline"
             size="sm"
-            className="border-[#6B21A8] text-[#6B21A8] hover:bg-[#6B21A8]/10 transition-all duration-300"
+            className="border-[#6B21A8] text-[#6B21A8] hover:bg-[#6B21A8]/10 transition-all duration-300 text-sm"
             onClick={onButtonClick}
           >
             {buttonText}
             <ArrowRight
-              size={16}
+              size={14}
               className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
             />
           </Button>

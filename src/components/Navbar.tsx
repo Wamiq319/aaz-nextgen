@@ -96,7 +96,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="md:hidden text-[#1A365D] hover:text-[#EF4444] focus:outline-none"
-              aria-label={t("menu")}
+              aria-label={"menu"}
             >
               <svg
                 className="h-6 w-6"
