@@ -39,7 +39,6 @@ export const Footer = () => {
     { name: "results", icon: <Award size={16} />, href: "/result" },
     { name: "downloads", icon: <FileText size={16} />, href: "/download" },
     { name: "contact", icon: <Phone size={16} />, href: "/contact" },
-    { name: "terms", icon: <Shield size={16} />, href: "/terms" },
   ];
 
   // Levels
