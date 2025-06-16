@@ -9,6 +9,8 @@ import { useState } from "react";
 
 const NAV_ITEMS = [
   { path: "home", key: "home" },
+  { path: "contest", key: "contest" },
+  { path: "level", key: "level" },
   { path: "result", key: "result" },
   { path: "download", key: "download" },
   { path: "about", key: "about" },
@@ -24,7 +26,7 @@ export default function Navbar() {
   const isActive = (path: string) => {
     const basePath = `/${locale}${path === "home" ? "" : `/${path}`}`;
     return pathname === basePath
-      ? "text-[#EF4444] font-semibold" // Changed to match hero section red
+      ? "bg-gradient-to-r from-red-50 to-red-100 text-[#EF4444] font-semibold" // Added gradient background
       : "text-[#1A365D] hover:text-[#EF4444]"; // Added hover color
   };
 
@@ -32,30 +34,54 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-[#E5E7EB]">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo - Left aligned */}
-          <Link href={`/${locale}`} className="flex-shrink-0" aria-label="Home">
+          {/* Logo and Brand - Left aligned */}
+          <Link
+            href={`/${locale}`}
+            className="flex-shrink-0 flex items-center space-x-2"
+            aria-label="Home"
+          >
             <Image
               src="/assets/images/logo.png"
               alt="Logo"
-              className="h-15 w-auto"
-              width={48}
-              height={48}
+              className="h-16 w-auto animate-pulse hover:animate-none"
+              width={64}
+              height={64}
               priority
             />
+            <div className="flex flex-col">
+              <span className="text-[#1A365D] font-bold text-xl tracking-wider">
+                AAZ Next-gen
+              </span>
+              <span className="text-[#EF4444] text-sm font-medium tracking-wide">
+                Ignite Minds,Elevate Futures
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex items-center space-x-8">
-            <ul className="flex space-x-8">
+          <div className="hidden md:flex items-center space-x-6">
+            <ul className="flex ">
               {NAV_ITEMS.map((item) => (
                 <li key={item.key}>
                   <Link
                     href={`/${locale}/${item.path === "home" ? "" : item.path}`}
-                    className={`text-sm uppercase tracking-wider ${isActive(
+                    className={`text-sm uppercase tracking-wider px-4 py-2 rounded-full relative group overflow-hidden ${isActive(
                       item.path
-                    )} transition-colors duration-200`}
+                    )} transition-all duration-300 hover:bg-gradient-to-r from-red-50 to-red-100`}
                   >
-                    {t(item.key)}
+                    <span className="relative z-10 inline-block group-hover:scale-110 transition-transform duration-300">
+                      {t(item.key)}
+                    </span>
+                    <span
+                      className={`absolute inset-0 rounded-full bg-gradient-to-r from-[#EF4444] to-red-600 transition-opacity duration-300 ${
+                        pathname ===
+                        `/${locale}${
+                          item.path === "home" ? "" : `/${item.path}`
+                        }`
+                          ? "opacity-10"
+                          : "opacity-0 group-hover:opacity-10"
+                      }`}
+                    ></span>
                   </Link>
                 </li>
               ))}
@@ -106,12 +132,24 @@ export default function Navbar() {
                 <li key={item.key}>
                   <Link
                     href={`/${locale}/${item.path === "home" ? "" : item.path}`}
-                    className={`block px-3 py-2 rounded-md text-base font-medium ${isActive(
+                    className={`block px-4 py-2 rounded-full text-base font-medium relative group overflow-hidden ${isActive(
                       item.path
-                    )}`}
+                    )} transition-all duration-300 hover:bg-gradient-to-r from-red-50 to-red-100`}
                     onClick={() => setIsMenuOpen(false)}
                   >
-                    {t(item.key)}
+                    <span className="relative z-10 inline-block group-hover:scale-110 transition-transform duration-300">
+                      {t(item.key)}
+                    </span>
+                    <span
+                      className={`absolute inset-0 rounded-full bg-gradient-to-r from-[#EF4444] to-red-600 transition-opacity duration-300 ${
+                        pathname ===
+                        `/${locale}${
+                          item.path === "home" ? "" : `/${item.path}`
+                        }`
+                          ? "opacity-10"
+                          : "opacity-0 group-hover:opacity-10"
+                      }`}
+                    ></span>
                   </Link>
                 </li>
               ))}

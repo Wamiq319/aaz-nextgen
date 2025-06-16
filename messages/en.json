@@ -4,27 +4,96 @@
     "about": "About",
     "contact": "Contact",
     "result": "Results",
-    "download": "Downloads"
+    "download": "Downloads",
+    "contest": "Contests",
+    "level": "Levels"
+  },
+  "ContestPage": {
+    "title": "Contests",
+    "titleHighlight": "Showcase",
+    "description": "Explore our diverse range of academic contests designed to ignite brilliance across every grade level.",
+    "viewDetails": "View Details",
+    "viewAllContests": "View All Contests",
+    "registerNow": "Register Now",
+    "contests": {
+      "NoorQuest": {
+        "name": "NoorQuest",
+        "shortDesc": "Test your Qur'anic wisdom with NoorQuest.",
+        "fullDesc": "NoorQuest is a spiritually enriching contest designed to test students' knowledge of the Qur'an, including memorization, comprehension, and key themes.",
+        "levels": "Available for: Grades I–II & XI–XII",
+        "format": "MCQs & oral recitation",
+        "awards": "Top scorers win certificates and special Islamic literature bundles.",
+        "status": "Registration Open"
+      },
+      "CodeNova": {
+        "name": "CodeNova",
+        "shortDesc": "Unleash your inner coder.",
+        "fullDesc": "CodeNova challenges students with age-appropriate logical, computational, and programming-based problems, promoting digital fluency.",
+        "levels": "Available for: Grades I–II & V–VI",
+        "format": "Multiple choice + drag & drop coding",
+        "awards": "Coding kits and scholarships for winners.",
+        "status": "Registration Open"
+      },
+      "NuminaX": {
+        "name": "NuminaX",
+        "shortDesc": "Crack the code of numbers.",
+        "fullDesc": "A mathematics contest designed to challenge critical thinking, logic, and arithmetic fluency across various age levels.",
+        "levels": "Available for: Grades III–IV & VII–VIII",
+        "format": "MCQs and puzzles",
+        "awards": "Medals and cash prizes for top performers.",
+        "status": "Registration Open"
+      },
+      "NovaMind": {
+        "name": "NovaMind",
+        "shortDesc": "Explore the frontiers of science.",
+        "fullDesc": "NovaMind is a science contest that tests observation, hypothesis building, and analytical thinking in real-world scenarios.",
+        "levels": "Available for: Grades V–VI & IX–X",
+        "format": "MCQs + practical case-based scenarios",
+        "awards": "Science lab kits & National Science Honor Certificates.",
+        "status": "Registration Open"
+      },
+      "InkspireChronicles": {
+        "name": "Inkspire Chronicles",
+        "shortDesc": "Where your words create worlds.",
+        "fullDesc": "A creative writing contest inviting students to express themselves through stories, essays, and imaginative prose.",
+        "levels": "Available for: Grades III–IV & IX–X",
+        "format": "Submit original writing based on prompt",
+        "awards": "Publication in AAZ Anthology + writing mentorship",
+        "status": "Registration Open"
+      },
+      "VisionVerse": {
+        "name": "VisionVerse",
+        "shortDesc": "Paint your vision, shape your verse.",
+        "fullDesc": "VisionVerse invites students to express creativity through visual art, exploring themes of innovation, nature, and culture.",
+        "levels": "Available for: Grades VII–VIII & XI–XII",
+        "format": "Art submissions + theme-based explanation",
+        "awards": "Art supplies and gallery feature",
+        "status": "Registration Open"
+      }
+    }
   },
   "HomePage": {
     "hero": {
       "intro": {
-        "title": "Fueling Ambition  ",
-        "highlight": "Through  Modern Learning.",
+        "title": "Fueling Ambition Through",
+        "highlight": "Modern Learning.",
         "description": "We support students and teachers with quality testing services and reliable resources.",
-        "buttonText": "Explore Upcoming Tests"
+        "buttonText": "Explore Contests",
+        "slogan": "Evolve · Compete · Conquer"
       },
       "results": {
         "title": "Stay Updated with",
-        "highlight": " Your Newest Achievements",
-        "description": "See your test scores the moment they’re ready—no stress. Save or print them with just one click!",
-        "buttonText": "View Results"
+        "highlight": "Newest Achievements",
+        "description": "See your test scores the moment they're ready—no stress. Save or print them with just one click!",
+        "buttonText": "View Results",
+        "slogan": "Track · Achieve · Excel"
       },
       "forms": {
         "title": "Study Materials &",
         "highlight": "Registration Forms",
         "description": "Download test guides and forms to help you register and prepare effectively.",
-        "buttonText": "Download Resources"
+        "buttonText": "Download Resources",
+        "slogan": "Learn · Grow · Succeed"
       },
       "stats": {
         "students": "10,000+",
@@ -37,9 +106,53 @@
       "title": "About AAZ Nextgen",
       "intro": "We're where innovation meets education, designed to spark curiosity and empower learners through technology-enhanced experiences.",
       "missionTitle": "Our Mission",
-      "mission": "Igniting intellectual curiosity with dynamic, tech-driven learning solutions.",
+      "mission": "At AAZ Nextgen, our mission is to ignite intellectual curiosity and elevate potential by providing a dynamic, technology-driven educational platform. We aim to challenge and nurture learners of all ages through innovative assessments, engaging content, and purposeful academic support, ensuring every learner grows with confidence, clarity, and competence.",
       "visionTitle": "Our Vision",
-      "vision": "A globally trusted hub where pedagogy meets digital transformation."
+      "vision": "To become a globally trusted hub of academic distinction—where technology meets pedagogy, where testing becomes transformation, and where every learner is inspired to achieve mastery beyond limits."
+    },
+    "contests": {
+      "title": "Explore Our ",
+      "titleHighlight": "Epic Contests",
+      "description": "Discover exciting competitions tailored for every class level with unique themes and challenges.",
+      "viewDetails": "View Details",
+      "viewAllContests": "View All Contests"
+    },
+    "levels": {
+      "title": "Academic Levels",
+      "description": "Discover our carefully designed academic levels, each crafted to nurture and challenge students at different stages of their educational journey.",
+      "explore": "Explore Level",
+      "levels": {
+        "NovaNest": {
+          "name": "NovaNest",
+          "description": "Where stars begin to rise",
+          "subDescription": "A gentle and exciting start for young learners"
+        },
+        "Ignitia": {
+          "name": "Ignitia",
+          "description": "Where minds spark curiosity",
+          "subDescription": "The ignition of imagination and learning"
+        },
+        "LuminaCore": {
+          "name": "LuminaCore",
+          "description": "Where light meets logic",
+          "subDescription": "Clarity, reasoning, and foundational growth"
+        },
+        "VortexEdge": {
+          "name": "VortexEdge",
+          "description": "Where intellect accelerates",
+          "subDescription": "Dynamic energy and sharpening intelligence"
+        },
+        "AstraPrime": {
+          "name": "AstraPrime",
+          "description": "Where brilliance reaches its apex",
+          "subDescription": "Elite excellence for senior level learners"
+        },
+        "Zenithra": {
+          "name": "Zenithra",
+          "description": "Where mastery meets leadership",
+          "subDescription": "The pinnacle of academic achievement"
+        }
+      }
     },
     "Testimonials": {
       "title": "What Our Students Say",
@@ -65,6 +178,7 @@
 
     "KeyServices": {
       "title": "Our Services",
+      "description": "Discover our comprehensive range of educational services designed to help you excel",
       "results": {
         "title": "Test Results",
         "description": "Instant access to verified score reports",
@@ -77,7 +191,7 @@
       },
       "studyMaterials": {
         "title": "Digital Library",
-        "description": "Thousands of TEST PDF resources ",
+        "description": "Thousands of TEST PDF resources",
         "buttonText": "Explore Library"
       }
     },
@@ -111,10 +225,6 @@
     "whoWeAreContent": "At AAZ Nextgen, we believe that education should not only inform—but inspire. Guided by our tagline, <strong>Fueling Ambition Through Modern Learning</strong>, we are a next-generation educational platform committed to empowering learners through innovation, challenge, and personalized growth.\n\nWhether you're a student seeking to test your knowledge or a lifelong learner aiming for intellectual excellence, AAZ Nextgen offers dynamic, technology-enhanced tools and assessments tailored to diverse needs and age groups.\n\nRooted in a mission to ignite curiosity and elevate potential, and driven by a vision to become a globally trusted hub of academic distinction, AAZ Nextgen is where passion meets progress—and futures are built.",
     "taglineTitle": "Our Philosophy",
     "tagline": "Fueling Ambition Through Modern Learning",
-    "missionTitle": "Our Mission",
-    "missionStatement": "At AAZ Nextgen, our mission is to ignite intellectual curiosity and elevate potential through innovative, technology-driven learning experiences.",
-    "visionTitle": "Our Vision",
-    "visionStatement": "To become a globally trusted hub of academic distinction where cutting-edge pedagogy meets digital transformation.",
     "uniqueTitle": "What Makes Us Unique",
     "unique": {
       "innovation": {
@@ -133,34 +243,65 @@
         "title": "Confidence-focused growth",
         "description": "Building self-assurance through measurable achievement and progress."
       }
+    },
+    "goals": {
+      "title": "Our Advanced Goals",
+      "list": {
+        "revolutionize": "Revolutionize online learning through intelligent, adaptive assessments.",
+        "empower": "Empower learners to exceed academic standards with confidence.",
+        "foster": "Foster critical thinking and problem-solving in every learner.",
+        "bridge": "Bridge technology and pedagogy to redefine modern education.",
+        "create": "Create a globally competitive platform for holistic intellectual growth.",
+        "promote": "Promote lifelong learning through engaging, challenge-based content.",
+        "deliver": "Deliver cutting-edge educational experiences across all age groups.",
+        "cultivate": "Cultivate a community of ambitious, future-ready learners.",
+        "personalize": "Personalize progress with smart, scalable testing solutions.",
+        "transform": "Transform curiosity into achievement through purposeful learning."
+      }
     }
   },
 
   "Footer": {
-    "tagline": "Shaping Futures Through Innovation and Integrity",
+    "tagline": "Fueling Ambition Through Modern Learning",
     "pages": {
       "title": "Quick Links",
       "home": "Home",
       "about": "About",
       "results": "Results",
       "downloads": "Downloads",
-      "contact": "Contact"
+      "contact": "Contact",
+      "terms": "Terms & Privacy"
     },
     "services": {
       "title": "Our Services",
-      "student_portal": "Student Portal",
-      "test_prep": "Test Preparation",
-      "result_verification": "Result Verification",
-      "registration": "Registration"
+      "levels": {
+        "title": "Academic Levels",
+        "NovaNest": "NovaNest (I–II)",
+        "Ignitia": "Ignitia (III–IV)",
+        "LuminaCore": "LuminaCore (V–VI)",
+        "VortexEdge": "VortexEdge (VII–VIII)",
+        "AstraPrime": "AstraPrime (IX–X)",
+        "Zenithra": "Zenithra (XI–XII)"
+      },
+      "contests": {
+        "title": "Contests",
+        "NoorQuest": "NoorQuest",
+        "CodeNova": "CodeNova",
+        "NuminaX": "NuminaX",
+        "NovaMind": "NovaMind",
+        "InkspireChronicles": "Inkspire Chronicles",
+        "VisionVerse": "VisionVerse"
+      }
     },
     "contact": {
       "title": "Contact Us",
-      "email": "info@aaznext.com",
-      "phone": "+92 300 1234567",
-      "address": "Lahore, Pakistan",
+      "email": "aaznextgen111@gmail.com",
+      "phone": "+92 312 0854931",
+      "address": "Gulistan Colony, Lane #3, House #217, Rawalpindi",
       "hours": "Mon-Fri: 9AM - 5PM"
     },
-    "copyright": "All rights reserved."
+    "copyright": "All rights reserved.",
+    "designedBy": "Designed by WλM!QΞ://dev"
   },
   "Common": {
     "upcomingEvents": "Upcoming Events",
@@ -169,5 +310,82 @@
     "next": "Next",
     "of": "of",
     "viewDetails": "View Details"
+  },
+  "LevelPage": {
+    "title": "Academic Levels",
+    "description": "Discover our carefully designed academic levels, each crafted to nurture and challenge students at different stages of their educational journey.",
+    "levels": {
+      "NovaNest": {
+        "name": "NovaNest",
+        "classRange": "I–II",
+        "description": "Where stars begin to rise",
+        "subDescription": "A gentle and exciting start for young learners"
+      },
+      "Ignitia": {
+        "name": "Ignitia",
+        "classRange": "III–IV",
+        "description": "Where minds spark curiosity",
+        "subDescription": "The ignition of imagination and learning"
+      },
+      "LuminaCore": {
+        "name": "LuminaCore",
+        "classRange": "V–VI",
+        "description": "Where light meets logic",
+        "subDescription": "Clarity, reasoning, and foundational growth"
+      },
+      "VortexEdge": {
+        "name": "VortexEdge",
+        "classRange": "VII–VIII",
+        "description": "Where intellect accelerates",
+        "subDescription": "Dynamic energy and sharpening intelligence"
+      },
+      "AstraPrime": {
+        "name": "AstraPrime",
+        "classRange": "IX–X",
+        "description": "Where brilliance reaches its apex",
+        "subDescription": "Elite excellence for senior level learners"
+      },
+      "Zenithra": {
+        "name": "Zenithra",
+        "classRange": "XI–XII",
+        "description": "Where mastery meets leadership",
+        "subDescription": "The pinnacle of academic achievement"
+      }
+    }
+  },
+  "ContactPage": {
+    "title": "Contact Us",
+    "description": "Have questions or feedback? We'd love to hear from you. Reach out to us and we'll get back to you as soon as possible.",
+    "form": {
+      "title": "Send us a message",
+      "firstName": "First Name",
+      "firstNamePlaceholder": "Enter your first name",
+      "lastName": "Last Name",
+      "lastNamePlaceholder": "Enter your last name",
+      "email": "Email",
+      "emailPlaceholder": "Enter your email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter your phone number",
+      "message": "Message",
+      "messagePlaceholder": "Your message here...",
+      "submit": "Send Message"
+    },
+    "info": {
+      "title": "Contact Information",
+      "description": "We're here to help you with any questions about our programs, assessments, or learning platform.",
+      "phone": {
+        "title": "Phone"
+      },
+      "email": {
+        "title": "Email"
+      },
+      "address": {
+        "title": "Address"
+      }
+    },
+    "social": {
+      "title": "Follow Us",
+      "description": "Stay connected with AAZ Nextgen for updates, learning tips, and more."
+    }
   }
 }

@@ -8,7 +8,7 @@ export const QuickIntroSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto">
         {/* Intro Block */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#6B21A8] mb-6">

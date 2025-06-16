@@ -10,6 +10,7 @@ import {
   BookOpen,
 } from "lucide-react";
 import { useTranslations } from "next-intl";
+import { QuickIntroSection } from "@/components/home/Intro";
 
 export default function AboutPage() {
   const t = useTranslations("AboutPage");
@@ -55,47 +56,7 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
-
-      {/* Mission & Vision */}
-      <section className="py-16 bg-[#F9FAFB]">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-8">
-            {/* Mission */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-[#F472B6]/20">
-              <div className="flex gap-5 items-start">
-                <div className="p-3 bg-[#6B21A8] rounded-lg text-white flex-shrink-0">
-                  <Rocket className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-[#6B21A8] mb-3">
-                    {t("missionTitle")}
-                  </h3>
-                  <p className="text-[#4B5563] leading-relaxed">
-                    {t("missionStatement")}
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Vision */}
-            <div className="bg-white p-8 rounded-xl shadow-sm border border-[#F472B6]/20">
-              <div className="flex gap-5 items-start">
-                <div className="p-3 bg-[#D63384] rounded-lg text-white flex-shrink-0">
-                  <Globe className="h-6 w-6" />
-                </div>
-                <div>
-                  <h3 className="text-2xl font-semibold text-[#6B21A8] mb-3">
-                    {t("visionTitle")}
-                  </h3>
-                  <p className="text-[#4B5563] leading-relaxed">
-                    {t("visionStatement")}
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <QuickIntroSection />
 
       {/* What Makes Us Unique */}
       <section className="py-16 bg-white">
@@ -155,6 +116,85 @@ export default function AboutPage() {
               <p className="text-[#4B5563]">
                 {t("unique.confidence.description")}
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Goals Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-[#6B21A8] mb-12 text-center">
+            {t("goals.title")}
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            <div className="bg-[#FCE7F3] p-6 rounded-xl">
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <Rocket className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.revolutionize")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Award className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.empower")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Target className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.foster")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Globe className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.bridge")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Sparkles className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.create")}
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div className="bg-[#FCE7F3] p-6 rounded-xl">
+              <ul className="space-y-4">
+                <li className="flex items-start">
+                  <BookOpen className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.promote")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Sparkles className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.deliver")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <UserCog className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.cultivate")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Target className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.personalize")}
+                  </span>
+                </li>
+                <li className="flex items-start">
+                  <Rocket className="h-6 w-6 text-[#D63384] mt-1 mr-3 flex-shrink-0" />
+                  <span className="text-[#4B5563]">
+                    {t("goals.list.transform")}
+                  </span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>

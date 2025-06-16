@@ -6,7 +6,7 @@ import { Button } from "../ui/Button";
 import { StatCard } from "../ui/StatCard";
 import Image from "next/image";
 import { getDirection } from "@/lib/direction";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 
 import {
   Calendar,
@@ -24,21 +24,21 @@ const slides = [
   {
     id: 1,
     key: "intro",
-    scrollTo: "upcoming-tests",
+    scrollTo: "contests",
     icon: <Calendar size={18} />,
     image: "/assets/images/hero-intro.png",
   },
   {
     id: 2,
     key: "results",
-    scrollTo: "results",
+    scrollTo: "result",
     icon: <Award size={18} />,
     image: "/assets/images/hero-intro.png",
   },
   {
     id: 3,
     key: "forms",
-    scrollTo: "downloads",
+    scrollTo: "download",
     icon: <FileText size={18} />,
     image: "/assets/images/hero-intro.png",
   },
@@ -49,6 +49,7 @@ export const HeroSection = () => {
   const t = useTranslations("HomePage.hero");
   const { locale } = useParams();
   const { direction, isRTL } = getDirection(locale as string);
+  const router = useRouter();
 
   const nextSlide = () => setCurrent((prev) => (prev + 1) % slides.length);
   const prevSlide = () =>
@@ -58,6 +59,10 @@ export const HeroSection = () => {
     const interval = setInterval(nextSlide, 8000);
     return () => clearInterval(interval);
   }, []);
+
+  const navigateToPage = (path: string) => {
+    router.push(`/${locale}/${path}`);
+  };
 
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
@@ -112,7 +117,9 @@ export const HeroSection = () => {
             <div className="md:hidden w-full flex flex-col px-6 pb-14 justify-end items-center relative z-10 min-h-full">
               <div className="w-full max-w-md text-center">
                 <h1 className="text-3xl font-bold text-white leading-tight mb-4">
-                  {t(`${slide.key}.title`)}{" "}
+                  <span className="whitespace-nowrap">
+                    {t(`${slide.key}.title`)}
+                  </span>{" "}
                   <span className="text-[#ff0084]">
                     {t(`${slide.key}.highlight`)}
                   </span>
@@ -120,13 +127,16 @@ export const HeroSection = () => {
                 <p className="text-base text-white mb-6">
                   {t(`${slide.key}.description`)}
                 </p>
+                <p className="text-lg font-semibold text-[#ff0084] mb-6 tracking-wider">
+                  {t(`${slide.key}.slogan`)}
+                </p>
                 <Button
                   variant="red"
                   size="lg"
                   icon={
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
-                  onClick={() => scrollToSection(slide.scrollTo)}
+                  onClick={() => navigateToPage(slide.scrollTo)}
                   className="w-full max-w-xs mx-auto bg-[#EF4444] hover:bg-[#D63384]"
                 >
                   {t(`${slide.key}.buttonText`)}
@@ -140,7 +150,9 @@ export const HeroSection = () => {
               {/* Text Content - Always on left */}
               <div className="w-1/2 px-12 py-10 flex flex-col justify-center items-start bg-white">
                 <h1 className="text-5xl font-bold text-[#6B21A8] mb-4 leading-tight">
-                  {t(`${slide.key}.title`)}{" "}
+                  <span className="whitespace-nowrap">
+                    {t(`${slide.key}.title`)}
+                  </span>{" "}
                   <span className="text-[#D63384]">
                     {t(`${slide.key}.highlight`)}
                   </span>
@@ -148,13 +160,16 @@ export const HeroSection = () => {
                 <p className="text-lg text-[#4B5563] mb-6">
                   {t(`${slide.key}.description`)}
                 </p>
+                <p className="text-2xl font-semibold text-[#D63384] mb-6 tracking-wider">
+                  {t(`${slide.key}.slogan`)}
+                </p>
                 <Button
                   variant="primary"
                   size="lg"
                   icon={
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
-                  onClick={() => scrollToSection(slide.scrollTo)}
+                  onClick={() => navigateToPage(slide.scrollTo)}
                   className="bg-[#6B21A8] hover:bg-[#7E3BA8]"
                 >
                   {t(`${slide.key}.buttonText`)}
