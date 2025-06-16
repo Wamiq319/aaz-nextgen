@@ -43,16 +43,16 @@ export default function Navbar() {
             <Image
               src="/assets/images/logo.png"
               alt={t("home")}
-              className="h-16 w-auto animate-pulse hover:animate-none"
+              className="h-12 md:h-16 w-auto animate-pulse hover:animate-none"
               width={64}
               height={64}
               priority
             />
             <div className="flex flex-col">
-              <span className="text-[#1A365D] font-bold text-xl tracking-wider">
+              <span className="text-[#1A365D] font-bold text-base md:text-xl tracking-wider">
                 {t("brand")}
               </span>
-              <span className="text-[#EF4444] text-sm font-medium tracking-wide">
+              <span className="text-[#EF4444] text-xs md:text-sm font-medium tracking-wide">
                 {t("slogan")}
               </span>
             </div>
