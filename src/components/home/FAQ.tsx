@@ -1,13 +1,14 @@
 // components/FAQSection.tsx
 "use client";
 
-import { ArrowRight, ChevronDown, ChevronUp } from "lucide-react";
+import { ArrowRight, ArrowLeft, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "../ui/Button";
 
 export const FAQSection = () => {
   const t = useTranslations("HomePage.FAQ");
+  const locale = useLocale();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -73,7 +74,7 @@ export const FAQSection = () => {
             className="mx-auto"
           >
             {t("ctaText")}
-            <ArrowRight />
+            {locale === "ur" ? <ArrowLeft /> : <ArrowRight />}
           </Button>
         </div>
       </div>

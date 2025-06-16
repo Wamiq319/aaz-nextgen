@@ -12,47 +12,47 @@ import {
   Paintbrush,
 } from "lucide-react";
 
-const contestDetails = [
-  {
-    name: "NoorQuest",
-    icon: <Moon size={24} />,
-    color: "#F59E0B",
-    imageUrl: "/assets/images/contest/noorquest.jpeg",
-  },
-  {
-    name: "CodeNova",
-    icon: <Code size={24} />,
-    color: "#3B82F6",
-    imageUrl: "/assets/images/contest/codenova.jpeg",
-  },
-  {
-    name: "NuminaX",
-    icon: <Divide size={24} />,
-    color: "#10B981",
-    imageUrl: "/assets/images/contest/numinax.png",
-  },
-  {
-    name: "InkspireChronicles",
-    icon: <PenTool size={24} />,
-    color: "#EC4899",
-    imageUrl: "/assets/images/contest/inkspirechronicles.jpeg",
-  },
-  {
-    name: "NovaMind",
-    icon: <FlaskConical size={24} />,
-    color: "#8B5CF6",
-    imageUrl: "/assets/images/contest/novamind.jpeg",
-  },
-  {
-    name: "VisionVerse",
-    icon: <Paintbrush size={24} />,
-    color: "#F97316",
-    imageUrl: "/assets/images/contest/visionverse.png",
-  },
-];
-
 export default function ContestPage() {
   const t = useTranslations("ContestPage");
+
+  const contestDetails = [
+    {
+      name: "NoorQuest",
+      icon: <Moon size={24} />,
+      color: "#F59E0B",
+      imageUrl: "/assets/images/contest/noorquest.jpeg",
+    },
+    {
+      name: "CodeNova",
+      icon: <Code size={24} />,
+      color: "#3B82F6",
+      imageUrl: "/assets/images/contest/codenova.jpeg",
+    },
+    {
+      name: "NuminaX",
+      icon: <Divide size={24} />,
+      color: "#10B981",
+      imageUrl: "/assets/images/contest/numinax.png",
+    },
+    {
+      name: "InkspireChronicles",
+      icon: <PenTool size={24} />,
+      color: "#EC4899",
+      imageUrl: "/assets/images/contest/inkspirechronicles.jpeg",
+    },
+    {
+      name: "NovaMind",
+      icon: <FlaskConical size={24} />,
+      color: "#8B5CF6",
+      imageUrl: "/assets/images/contest/novamind.jpeg",
+    },
+    {
+      name: "VisionVerse",
+      icon: <Paintbrush size={24} />,
+      color: "#F97316",
+      imageUrl: "/assets/images/contest/visionverse.png",
+    },
+  ];
 
   return (
     <section className="container mx-auto py-12 px-4">
@@ -67,7 +67,7 @@ export default function ContestPage() {
         {contestDetails.map((contest, index) => (
           <ContestCard
             key={index}
-            title={contest.name}
+            title={t(`contests.${contest.name}.name`)}
             description={t(`contests.${contest.name}.shortDesc`)}
             icon={contest.icon}
             color={contest.color}

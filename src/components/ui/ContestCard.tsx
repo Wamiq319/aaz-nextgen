@@ -1,9 +1,10 @@
 "use client";
 
 import { Button } from "./Button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import { ReactNode } from "react";
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 
 interface ContestCardProps {
   title: string;
@@ -38,6 +39,9 @@ export const ContestCard = ({
   style,
   imageUrl,
 }: ContestCardProps) => {
+  const t = useTranslations("ContestPage.labels");
+  const locale = useLocale();
+
   return (
     <div
       className={`relative bg-white rounded-xl shadow-lg overflow-hidden border-2 border-[#6B21A8]/20 hover:border-[#6B21A8]/40 hover:shadow-2xl transition-all duration-300 group hover:scale-[1.02] animate-fadeIn ${className}`}
@@ -82,22 +86,22 @@ export const ContestCard = ({
           <ul className="text-xs text-gray-700 space-y-1 mb-3">
             {levels && (
               <li>
-                <strong>Eligible Levels:</strong> {levels}
+                <strong>{t("eligibleLevels")}:</strong> {levels}
               </li>
             )}
             {format && (
               <li>
-                <strong>Format:</strong> {format}
+                <strong>{t("format")}:</strong> {format}
               </li>
             )}
             {awards && (
               <li>
-                <strong>Awards:</strong> {awards}
+                <strong>{t("awards")}:</strong> {awards}
               </li>
             )}
             {status && (
               <li>
-                <strong>Status:</strong> {status}
+                <strong>{t("status")}:</strong> {status}
               </li>
             )}
           </ul>
@@ -111,10 +115,17 @@ export const ContestCard = ({
             onClick={onButtonClick}
           >
             {buttonText}
-            <ArrowRight
-              size={14}
-              className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
-            />
+            {locale === "ur" ? (
+              <ArrowLeft
+                size={14}
+                className="ml-2 transition-transform duration-300 group-hover:-translate-x-1"
+              />
+            ) : (
+              <ArrowRight
+                size={14}
+                className="ml-2 transition-transform duration-300 group-hover:translate-x-1"
+              />
+            )}
           </Button>
         </div>
       </div>

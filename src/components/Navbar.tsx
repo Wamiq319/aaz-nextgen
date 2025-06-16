@@ -34,10 +34,10 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-[#E5E7EB]">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo and Brand - Left aligned */}
+          {/* Logo and Brand */}
           <Link
             href={`/${locale}`}
-            className="flex-shrink-0 flex items-center space-x-2"
+            className="flex-shrink-0 flex items-center gap-2"
             aria-label={t("home")}
           >
             <Image
@@ -58,9 +58,9 @@ export default function Navbar() {
             </div>
           </Link>
 
-          {/* Desktop Navigation - Centered */}
-          <div className="hidden md:flex items-center space-x-6">
-            <ul className="flex ">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-6">
+            <ul className="flex">
               {NAV_ITEMS.map((item) => (
                 <li key={item.key}>
                   <Link
@@ -88,8 +88,8 @@ export default function Navbar() {
             </ul>
           </div>
 
-          {/* Language Switcher - Right aligned */}
-          <div className="flex items-center space-x-4">
+          {/* Language Switcher and Mobile Menu Button */}
+          <div className="flex items-center gap-4">
             <LanguageSwitcher />
 
             {/* Mobile menu button */}

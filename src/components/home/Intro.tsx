@@ -8,7 +8,7 @@ export const QuickIntroSection = () => {
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-6xl mx-auto px-4">
         {/* Intro Block */}
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-[#6B21A8] mb-6">
@@ -20,7 +20,7 @@ export const QuickIntroSection = () => {
         </div>
 
         {/* Mission & Vision Grid */}
-        <div className="grid md:grid-cols-2 gap-8">
+        <div className="grid md:grid-cols-2 gap-8 mx-4 md:mx-0">
           {/* Mission */}
           <div className="bg-[#F9FAFB] p-8 rounded-xl border border-[#F472B6]/30 hover:border-[#6B21A8]/50 transition-all">
             <div className="flex gap-5 items-start">

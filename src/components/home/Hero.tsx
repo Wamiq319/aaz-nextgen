@@ -131,16 +131,16 @@ export const HeroSection = () => {
                   {t(`${slide.key}.slogan`)}
                 </p>
                 <Button
-                  variant="red"
+                  variant="primary"
                   size="lg"
                   icon={
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
                   onClick={() => navigateToPage(slide.scrollTo)}
-                  className="w-full max-w-xs mx-auto bg-[#EF4444] hover:bg-[#D63384]"
+                  className="w-full max-w-xs mx-auto bg-[#6B21A8] hover:bg-[#7E3BA8] transition-all duration-300"
                 >
                   {t(`${slide.key}.buttonText`)}
-                  <ArrowRight size={16} />
+                  {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
                 </Button>
               </div>
             </div>
@@ -170,7 +170,7 @@ export const HeroSection = () => {
                     <div className="flex gap-1 items-center">{slide.icon}</div>
                   }
                   onClick={() => navigateToPage(slide.scrollTo)}
-                  className="bg-[#6B21A8] hover:bg-[#7E3BA8]"
+                  className="bg-[#6B21A8] hover:bg-[#7E3BA8] transition-all duration-300"
                 >
                   {t(`${slide.key}.buttonText`)}
                   {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}

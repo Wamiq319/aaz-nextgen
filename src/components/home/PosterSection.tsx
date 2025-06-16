@@ -1,6 +1,6 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { Button } from "../ui/Button";
 import { ContestCard } from "../ui/ContestCard";
 import { useParams } from "next/navigation";
@@ -43,7 +43,7 @@ const contests = [
         description: "Mathematics & Logical Reasoning",
       },
       {
-        name: "Inkspire Chronicles",
+        name: "InkspireChronicles",
         icon: <PenTool size={20} />,
         color: "#EC4899",
         description: "Creative Writing & Storytelling",
@@ -97,7 +97,7 @@ const contests = [
         description: "Science & Innovation",
       },
       {
-        name: "Inkspire Chronicles",
+        name: "InkspireChronicles",
         icon: <PenTool size={20} />,
         color: "#EC4899",
         description: "Creative Writing & Storytelling",
@@ -157,7 +157,7 @@ export const ContestPosterSection = () => {
               <div className="relative p-6 z-10">
                 <div className="flex justify-between items-start mb-4">
                   <span className="px-3 py-1 bg-[#6B21A8]/10 text-[#6B21A8] rounded-full text-sm font-medium hover:bg-[#6B21A8]/20 transition-all duration-300 hover:scale-105">
-                    Class {contest.classLevel}
+                    {t("classLevel", { level: contest.classLevel })}
                   </span>
                   <h3 className="text-2xl font-bold text-[#6B21A8] transition-transform duration-300 group-hover:scale-105">
                     {contest.title}
@@ -181,10 +181,10 @@ export const ContestPosterSection = () => {
                       </div>
                       <div>
                         <h4 className="font-semibold text-[#6B21A8] mb-1">
-                          {item.name}
+                          {contestT(`${item.name}.name`)}
                         </h4>
                         <p className="text-sm text-gray-600">
-                          {item.description}
+                          {contestT(`${item.name}.shortDesc`)}
                         </p>
                       </div>
                     </div>

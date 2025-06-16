@@ -17,6 +17,12 @@
     "viewDetails": "View Details",
     "viewAllContests": "View All Contests",
     "registerNow": "Register Now",
+    "labels": {
+      "eligibleLevels": "Eligible Levels",
+      "format": "Format",
+      "awards": "Awards",
+      "status": "Status"
+    },
     "contests": {
       "NoorQuest": {
         "name": "NoorQuest",
@@ -77,7 +83,7 @@
   "HomePage": {
     "hero": {
       "intro": {
-        "title": "Fueling Ambition Through",
+        "title": "Fueling Ambition BY",
         "highlight": "Modern Learning.",
         "description": "We support students and teachers with quality testing services and reliable resources.",
         "buttonText": "Explore Contests",
@@ -117,7 +123,8 @@
       "titleHighlight": "Epic Contests",
       "description": "Discover exciting competitions tailored for every class level with unique themes and challenges.",
       "viewDetails": "View Details",
-      "viewAllContests": "View All Contests"
+      "viewAllContests": "View All Contests",
+      "classLevel": "Class {level}"
     },
     "levels": {
       "title": "Academic Levels",
