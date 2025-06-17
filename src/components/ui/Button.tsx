@@ -25,7 +25,7 @@ export const Button = ({
   children,
   variant = "primary",
   className = "",
-  onClick = () => alert(`Button clicked: ${children?.toString()}`),
+  onClick,
   type = "button",
   disabled = false,
   rounded = false,
@@ -34,7 +34,7 @@ export const Button = ({
   ...props
 }: ButtonProps) => {
   const baseClasses =
-    "mx-2 inline-flex items-center justify-center font-medium transition-all duration-200 whitespace-nowrap shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500";
+    "mx-2 inline-flex items-center justify-center font-medium transition-all duration-200 whitespace-nowrap shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transform hover:scale-105";
 
   const variants = {
     primary:

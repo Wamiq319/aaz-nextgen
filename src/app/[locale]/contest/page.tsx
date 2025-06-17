@@ -11,9 +11,15 @@ import {
   FlaskConical,
   Paintbrush,
 } from "lucide-react";
+import { useState } from "react";
+import { ComingSoonPopup } from "@/components/ui/ComingSoonPopup";
 
 export default function ContestPage() {
   const t = useTranslations("ContestPage");
+  const [showPopup, setShowPopup] = useState(false);
+  const showComingSoon = () => {
+    setShowPopup(true);
+  };
 
   const contestDetails = [
     {
@@ -66,6 +72,7 @@ export default function ContestPage() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-6xl mx-auto">
         {contestDetails.map((contest, index) => (
           <ContestCard
+            onButtonClick={showComingSoon}
             key={index}
             title={t(`contests.${contest.name}.name`)}
             description={t(`contests.${contest.name}.shortDesc`)}
@@ -83,6 +90,7 @@ export default function ContestPage() {
           />
         ))}
       </div>
+      {showPopup && <ComingSoonPopup onClose={() => setShowPopup(false)} />}
     </section>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useTranslations, useLocale } from "next-intl";
 import { Button } from "../ui/Button";
-import { ContestCard } from "../ui/ContestCard";
+
 import { useParams } from "next/navigation";
 import {
   Moon,
@@ -11,7 +11,10 @@ import {
   PenTool,
   FlaskConical,
   Paintbrush,
+  ArrowRight,
+  ArrowLeft,
 } from "lucide-react";
+import { getDirection } from "@/lib/direction";
 
 const contests = [
   {
@@ -128,6 +131,7 @@ export const ContestPosterSection = () => {
   const t = useTranslations("HomePage.contests");
   const contestT = useTranslations("ContestPage.contests");
   const { locale } = useParams();
+  const { direction, isRTL } = getDirection(locale as string);
 
   return (
     <section
@@ -198,11 +202,15 @@ export const ContestPosterSection = () => {
         <div className="mt-12 text-center">
           <div className="transition-transform duration-300 hover:scale-105 active:scale-95 inline-block">
             <Button
+              onClick={() => {
+                window.location.href = `/${locale}/contest`;
+              }}
               variant="primary"
               size="lg"
               className="bg-[#6B21A8] hover:bg-[#7E3BA8] px-8 py-4 text-lg transition-all duration-300"
             >
               {t("viewAllContests")}
+              {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
             </Button>
           </div>
         </div>

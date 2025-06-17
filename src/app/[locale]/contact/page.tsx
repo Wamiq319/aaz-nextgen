@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
+import { useState } from "react";
 import {
   Mail,
   MapPin,
@@ -12,9 +13,15 @@ import {
   Instagram,
   Linkedin,
 } from "lucide-react";
+import { ComingSoonPopup } from "@/components/ui/ComingSoonPopup";
 
 export default function ContactPage() {
   const t = useTranslations("ContactPage");
+  const [showPopup, setShowPopup] = useState(false);
+
+  const showComingSoon = () => {
+    setShowPopup(true);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -86,6 +93,7 @@ export default function ContactPage() {
                 variant="primary"
                 size="lg"
                 className="w-full"
+                onClick={showComingSoon}
               >
                 {t("form.submit")}
               </Button>
@@ -139,19 +147,43 @@ export default function ContactPage() {
             </h2>
             <p className="text-gray-600 mb-6">{t("social.description")}</p>
             <div className="flex gap-4 flex-wrap">
-              <Button variant="outline" size="lg" rounded className="gap-2">
+              <Button
+                onClick={showComingSoon}
+                variant="outline"
+                size="lg"
+                rounded
+                className="gap-2"
+              >
                 <Facebook className="h-5 w-5" />
                 Facebook
               </Button>
-              <Button variant="outline" size="lg" rounded className="gap-2">
+              <Button
+                onClick={showComingSoon}
+                variant="outline"
+                size="lg"
+                rounded
+                className="gap-2"
+              >
                 <Twitter className="h-5 w-5" />
                 Twitter
               </Button>
-              <Button variant="outline" size="lg" rounded className="gap-2">
+              <Button
+                onClick={showComingSoon}
+                variant="outline"
+                size="lg"
+                rounded
+                className="gap-2"
+              >
                 <Instagram className="h-5 w-5" />
                 Instagram
               </Button>
-              <Button variant="outline" size="lg" rounded className="gap-2">
+              <Button
+                onClick={showComingSoon}
+                variant="outline"
+                size="lg"
+                rounded
+                className="gap-2"
+              >
                 <Linkedin className="h-5 w-5" />
                 LinkedIn
               </Button>
@@ -159,6 +191,8 @@ export default function ContactPage() {
           </div>
         </div>
       </div>
+
+      {showPopup && <ComingSoonPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
