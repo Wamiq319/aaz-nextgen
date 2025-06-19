@@ -10,12 +10,13 @@ interface DataItem {
 }
 
 interface DataCardProps {
-  id?: string; // Unique identifier for the card
+  id?: string;
   title?: string;
   data: DataItem[];
-  buttonText: string;
-  onButtonClick: (id?: string) => void;
-  buttonVariant?:
+  // Make primary button optional
+  primaryButtonText?: string;
+  onPrimaryButtonClick?: (id?: string) => void;
+  primaryButtonVariant?:
     | "primary"
     | "secondary"
     | "outline"
@@ -23,30 +24,53 @@ interface DataCardProps {
     | "dark"
     | "outline-red"
     | "outline-blue";
-  buttonSize?: "sm" | "md" | "lg";
+  primaryButtonSize?: "sm" | "md" | "lg";
+  primaryButtonClassName?: string;
+  // Add secondary button (optional)
+  secondaryButtonText?: string;
+  onSecondaryButtonClick?: (id?: string) => void;
+  secondaryButtonVariant?:
+    | "primary"
+    | "secondary"
+    | "outline"
+    | "red"
+    | "dark"
+    | "outline-red"
+    | "outline-blue";
+  secondaryButtonSize?: "sm" | "md" | "lg";
+  secondaryButtonClassName?: string;
+  // Other props
   className?: string;
   cardClassName?: string;
   titleClassName?: string;
   dataClassName?: string;
-  buttonClassName?: string;
 }
 
 export const DataCard = ({
   id,
   title,
   data,
-  buttonText,
-  onButtonClick,
-  buttonVariant = "primary",
-  buttonSize = "md",
+  primaryButtonText,
+  onPrimaryButtonClick,
+  primaryButtonVariant = "primary",
+  primaryButtonSize = "md",
+  primaryButtonClassName = "",
+  secondaryButtonText,
+  onSecondaryButtonClick,
+  secondaryButtonVariant = "outline",
+  secondaryButtonSize = "md",
+  secondaryButtonClassName = "",
   className = "",
   cardClassName = "",
   titleClassName = "",
   dataClassName = "",
-  buttonClassName = "",
 }: DataCardProps) => {
-  const handleClick = () => {
-    onButtonClick(id); // Pass the id when clicked
+  const handlePrimaryClick = () => {
+    if (onPrimaryButtonClick) onPrimaryButtonClick(id);
+  };
+
+  const handleSecondaryClick = () => {
+    if (onSecondaryButtonClick) onSecondaryButtonClick(id);
   };
 
   return (
@@ -80,17 +104,31 @@ export const DataCard = ({
         </div>
       </div>
 
-      {/* Action Button */}
-      <div className={`w-full md:w-auto ${buttonClassName}`}>
-        <Button
-          variant={buttonVariant}
-          size={buttonSize}
-          onClick={handleClick} // Use the handler that passes the id
-          className="w-full md:w-auto"
-        >
-          {buttonText}
-        </Button>
-      </div>
+      {/* Action Buttons */}
+      {(primaryButtonText || secondaryButtonText) && (
+        <div className="flex flex-col md:flex-row gap-2 w-full md:w-auto">
+          {secondaryButtonText && (
+            <Button
+              variant={secondaryButtonVariant}
+              size={secondaryButtonSize}
+              onClick={handleSecondaryClick}
+              className={`w-full md:w-auto ${secondaryButtonClassName}`}
+            >
+              {secondaryButtonText}
+            </Button>
+          )}
+          {primaryButtonText && (
+            <Button
+              variant={primaryButtonVariant}
+              size={primaryButtonSize}
+              onClick={handlePrimaryClick}
+              className={`w-full md:w-auto ${primaryButtonClassName}`}
+            >
+              {primaryButtonText}
+            </Button>
+          )}
+        </div>
+      )}
     </div>
   );
 };

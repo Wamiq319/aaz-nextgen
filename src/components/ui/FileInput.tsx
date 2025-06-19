@@ -1,6 +1,6 @@
 "use client";
 
-import { ReactNode, ChangeEvent } from "react";
+import { ReactNode, ChangeEvent, useState } from "react";
 
 interface FileInputProps {
   label?: string;
@@ -11,17 +11,19 @@ interface FileInputProps {
   variant?: "primary" | "secondary";
   fullWidth?: boolean;
   icon?: ReactNode;
+  required?: boolean;
 }
 
 export const FileInput = ({
   label,
-  accept = "image/*,.pdf",
+  accept = ".pdf",
   multiple = false,
   onChange,
   className = "",
   variant = "primary",
   fullWidth = false,
   icon,
+  required = false,
 }: FileInputProps) => {
   const baseClasses =
     "transition-all duration-200 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold";
@@ -35,8 +37,15 @@ export const FileInput = ({
 
   const widthClass = fullWidth ? "w-full" : "";
 
+  const [fileNames, setFileNames] = useState<string[]>([]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.target.files);
+    if (e.target.files) {
+      setFileNames(Array.from(e.target.files).map((f) => f.name));
+    } else {
+      setFileNames([]);
+    }
   };
 
   return (
@@ -55,11 +64,15 @@ export const FileInput = ({
           accept={accept}
           multiple={multiple}
           onChange={handleChange}
+          required={required}
           className={`${baseClasses} ${variants[variant]} ${widthClass} ${
             icon ? "pl-10" : ""
           } ${className}`}
         />
       </div>
+      {fileNames.length > 0 && (
+        <div className="text-xs text-gray-500 mt-1">{fileNames.join(", ")}</div>
+      )}
     </div>
   );
 };

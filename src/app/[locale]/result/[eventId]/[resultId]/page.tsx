@@ -1,10 +1,9 @@
 "use client";
 
 import { useParams, useRouter } from "next/navigation";
-import resultsData from "@/data/results.json";
 import { Button } from "@/components/ui/Button";
 import { ArrowLeft } from "lucide-react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 export default function StudentResultPage() {
   const params = useParams();
@@ -17,14 +16,41 @@ export default function StudentResultPage() {
     ? params.resultId[0]
     : params?.resultId;
 
-  const result = resultsData.find(
-    (r) => r.eventId === eventId && r.resultId === resultId
-  );
+  const [result, setResult] = useState<any>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
-  if (!result) {
+  useEffect(() => {
+    if (!resultId) return;
+    setLoading(true);
+    setError("");
+    fetch(`/api/results?id=${resultId}`)
+      .then(async (res) => {
+        if (!res.ok) {
+          const err = await res.json();
+          throw new Error(err.error || "Failed to fetch result");
+        }
+        return res.json();
+      })
+      .then((data) => setResult(data))
+      .catch((err) => setError(err.message || "Could not load result."))
+      .finally(() => setLoading(false));
+  }, [resultId]);
+
+  if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-red-600">Result not found</h1>
+        <h1 className="text-2xl font-bold text-[#6B21A8] mb-4">Loading...</h1>
+      </div>
+    );
+  }
+
+  if (error || !result) {
+    return (
+      <div className="container mx-auto px-4 py-8 text-center">
+        <h1 className="text-2xl font-bold text-red-600">
+          {error || "Result not found"}
+        </h1>
         <Button
           variant="primary"
           onClick={() => router.push(`/result/${eventId}`)}

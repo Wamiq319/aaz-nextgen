@@ -47,7 +47,7 @@ export const Input = ({
   return (
     <div className={`flex flex-col gap-1 ${widthClass}`}>
       {label && (
-        <label className="text-sm font-medium text-gray-700">{label}</label>
+        <label className="text-sm font-medium text-[#6B21A8]">{label}</label>
       )}
       <div className="relative">
         {icon && (
