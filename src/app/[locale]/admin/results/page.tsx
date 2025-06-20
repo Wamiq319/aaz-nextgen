@@ -7,6 +7,7 @@ import { Input } from "@/components/ui/Input";
 import { Dropdown } from "@/components/ui/DropDown";
 import { DataCard } from "@/components/ui/DataCard";
 import { Loader } from "@/components/ui/Loader";
+import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
 import { useRouter } from "next/navigation";
 
 export default function ResultsPage() {
@@ -27,7 +28,6 @@ export default function ResultsPage() {
     rollNumber: "",
     score: "",
     position: "",
-    totalParticipants: "",
     hasWon: false,
     awardName: "",
     awardType: "",
@@ -39,6 +39,8 @@ export default function ResultsPage() {
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [resultToDelete, setResultToDelete] = useState<string | null>(null);
 
   const router = useRouter();
 
@@ -99,7 +101,6 @@ export default function ResultsPage() {
         rollNumber: formData.rollNumber,
         score: Number(formData.score),
         position: Number(formData.position),
-        totalParticipants: Number(formData.totalParticipants),
       },
       awards: {
         hasWon: formData.hasWon,
@@ -131,7 +132,6 @@ export default function ResultsPage() {
         rollNumber: "",
         score: "",
         position: "",
-        totalParticipants: "",
         hasWon: false,
         awardName: "",
         awardType: "",
@@ -155,19 +155,25 @@ export default function ResultsPage() {
   // Delete handler
   const handleDeleteResult = async (id?: string) => {
     if (!id) return;
-    if (!window.confirm("Are you sure you want to delete this result?")) return;
-    setDeletingId(id);
+    setResultToDelete(id);
+    setShowDeleteModal(true);
+  };
+
+  // Confirm delete handler
+  const confirmDelete = async () => {
+    if (!resultToDelete) return;
+    setDeletingId(resultToDelete);
     setErrorMessage("");
     setSuccessMessage("");
     try {
-      const res = await fetch(`/api/results?id=${id}`, {
+      const res = await fetch(`/api/results?id=${resultToDelete}`, {
         method: "DELETE",
       });
       if (!res.ok) {
         const err = await res.json();
         throw new Error(err.error || "Failed to delete result");
       }
-      setResults((prev) => prev.filter((r) => r.resultId !== id));
+      setResults((prev) => prev.filter((r) => r.resultId !== resultToDelete));
       setSuccessMessage("Result deleted successfully!");
       setTimeout(() => setSuccessMessage(""), 3000);
     } catch (err: any) {
@@ -175,7 +181,15 @@ export default function ResultsPage() {
       setTimeout(() => setErrorMessage(""), 3000);
     } finally {
       setDeletingId(null);
+      setShowDeleteModal(false);
+      setResultToDelete(null);
     }
+  };
+
+  // Cancel delete handler
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setResultToDelete(null);
   };
 
   return (
@@ -410,7 +424,12 @@ export default function ResultsPage() {
                 { label: "Position", value: result.examData.position },
               ]}
               primaryButtonText="View Full Result"
-              onPrimaryButtonClick={(id) => router.push(`/admin/results/${id}`)}
+              onPrimaryButtonClick={(id) => {
+                const result = results.find((r) => r.resultId === id);
+                if (result) {
+                  router.push(`/result/${result.eventId}/${id}`);
+                }
+              }}
               primaryButtonVariant="outline"
               primaryButtonSize="sm"
               secondaryButtonText={
@@ -430,6 +449,17 @@ export default function ResultsPage() {
           ))
         )}
       </div>
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        open={showDeleteModal}
+        title="Delete Result"
+        description="Are you sure you want to delete this result? This action cannot be undone."
+        confirmText="Yes, Delete"
+        cancelText="Cancel"
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
     </div>
   );
 }

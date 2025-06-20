@@ -4,6 +4,43 @@ import { useParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { ArrowLeft } from "lucide-react";
 import React, { useEffect, useState } from "react";
+import { Loader } from "@/components/ui/Loader";
+
+interface ResultData {
+  resultId: string;
+  eventId: string;
+  student: {
+    fullName: string;
+    fatherName: string;
+    grade: string;
+    institution: {
+      name: string;
+      campus: string;
+    };
+  };
+  examData: {
+    rollNumber: string;
+    score: number;
+    position: number;
+    totalParticipants: number;
+  };
+  awards: {
+    hasWon: boolean;
+    awardName: string;
+    awardType: string;
+  };
+  remarks: string;
+  publishedDate: string;
+  event?: {
+    eventId: string;
+    eventName: string;
+    examDate: string;
+    city: string;
+    category: string;
+    grades: string[];
+    totalParticipants: number;
+  };
+}
 
 export default function StudentResultPage() {
   const params = useParams();
@@ -16,7 +53,7 @@ export default function StudentResultPage() {
     ? params.resultId[0]
     : params?.resultId;
 
-  const [result, setResult] = useState<any>(null);
+  const [result, setResult] = useState<ResultData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -40,7 +77,7 @@ export default function StudentResultPage() {
   if (loading) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-[#6B21A8] mb-4">Loading...</h1>
+        <Loader text="Loading result..." />
       </div>
     );
   }
@@ -62,6 +99,10 @@ export default function StudentResultPage() {
     );
   }
 
+  // Use totalParticipants from event if available, otherwise from examData
+  const totalParticipants =
+    result.event?.totalParticipants || result.examData.totalParticipants;
+
   return (
     <div className="container mx-auto px-4 py-8 max-w-3xl">
       <Button
@@ -80,6 +121,12 @@ export default function StudentResultPage() {
           <p className="text-[#F3E8FF]">
             {result.student.fullName} • Roll No: {result.examData.rollNumber}
           </p>
+          {result.event && (
+            <p className="text-[#F3E8FF] text-sm mt-1">
+              {result.event.eventName} •{" "}
+              {new Date(result.event.examDate).toLocaleDateString()}
+            </p>
+          )}
         </div>
 
         <div className="p-6 space-y-6">
@@ -118,13 +165,19 @@ export default function StudentResultPage() {
               />
               <DetailItem
                 label="Position"
-                value={`#${result.examData.position} (out of ${result.examData.totalParticipants})`}
+                value={`#${result.examData.position} (out of ${totalParticipants})`}
               />
               {result.awards?.hasWon && (
                 <DetailItem
                   label="Award"
                   value={result.awards.awardName}
                   highlight
+                />
+              )}
+              {result.awards?.awardType && (
+                <DetailItem
+                  label="Award Type"
+                  value={result.awards.awardType}
                 />
               )}
               <DetailItem
@@ -134,9 +187,27 @@ export default function StudentResultPage() {
             </div>
           </div>
 
+          {/* Event Details */}
+          {result.event && (
+            <div className="pt-4 border-t border-gray-200">
+              <h2 className="text-lg font-semibold text-[#6B21A8] mb-3">
+                Event Details
+              </h2>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <DetailItem label="Event Name" value={result.event.eventName} />
+                <DetailItem label="City" value={result.event.city} />
+                <DetailItem label="Category" value={result.event.category} />
+                <DetailItem
+                  label="Total Participants"
+                  value={result.event.totalParticipants}
+                />
+              </div>
+            </div>
+          )}
+
           {/* Remarks */}
           {result.remarks && (
-            <div className="pt-4">
+            <div className="pt-4 border-t border-gray-200">
               <h2 className="text-lg font-semibold text-[#6B21A8] mb-3">
                 Judge's Remarks
               </h2>
