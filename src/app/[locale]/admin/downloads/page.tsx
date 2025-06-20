@@ -1,10 +1,13 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Input } from "@/components/ui/Input";
 import { FileInput } from "@/components/ui/FileInput";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
+import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
+import { DataCard } from "@/components/ui/DataCard";
+import { Pagination } from "@/components/Pagination";
 
 const categoryOptions = [
   { value: "Past Papers", label: "Past Papers" },
@@ -13,19 +16,6 @@ const categoryOptions = [
   { value: "Reference Books", label: "Reference Books" },
   { value: "Brochures", label: "Brochures" },
   { value: "Books", label: "Books" },
-];
-
-// Dummy downloads for UI
-const dummyDownloads = [
-  {
-    id: "1",
-    title: "2023 Past Papers Collection",
-    description: "Complete set of past papers from 2023 exams",
-    category: "Past Papers",
-    downloadUrl: "/assets/pdf/past-papers-2023.pdf",
-    uploadDate: "2024-01-15",
-    grades: ["10", "11", "12"],
-  },
 ];
 
 type DownloadType = {
@@ -39,7 +29,7 @@ type DownloadType = {
 };
 
 export default function DownloadsPage() {
-  const [downloads, setDownloads] = useState<DownloadType[]>(dummyDownloads);
+  const [downloads, setDownloads] = useState<DownloadType[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -48,13 +38,36 @@ export default function DownloadsPage() {
     grades: [] as string[],
     file: null as File | null,
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [creating, setCreating] = useState(false);
   const [createError, setCreateError] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
+  const [deletingId, setDeletingId] = useState<string | null>(null);
+  const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const [downloadToDelete, setDownloadToDelete] = useState<string | null>(null);
 
-  // TODO: Replace with real fetch logic
-  // useEffect(() => { ... }, []);
+  // Fetch downloads on component mount
+  useEffect(() => {
+    fetchDownloads();
+  }, []);
+
+  const fetchDownloads = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const response = await fetch("/api/downloads");
+      if (!response.ok) {
+        throw new Error("Failed to fetch downloads");
+      }
+      const data = await response.json();
+      setDownloads(data);
+    } catch (err: any) {
+      setError(err.message || "Failed to load downloads");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const handleFileChange = (files: FileList | null) => {
     setFormData({ ...formData, file: files && files[0] ? files[0] : null });
@@ -64,21 +77,37 @@ export default function DownloadsPage() {
     e.preventDefault();
     setCreating(true);
     setCreateError("");
-    // TODO: Implement real upload logic
-    setTimeout(() => {
-      setDownloads([
-        ...downloads,
-        {
-          id: (downloads.length + 1).toString(),
-          title: formData.title,
-          description: formData.description,
-          category: formData.category,
-          downloadUrl: "/assets/pdf/dummy.pdf",
-          uploadDate: new Date().toISOString().slice(0, 10),
-          grades: formData.grades,
-        },
-      ]);
-      setShowAddForm(false);
+    setSuccessMessage("");
+
+    if (!formData.file) {
+      setCreateError("Please select a file to upload");
+      setCreating(false);
+      return;
+    }
+
+    try {
+      const formDataToSend = new FormData();
+      formDataToSend.append("title", formData.title);
+      formDataToSend.append("description", formData.description);
+      formDataToSend.append("category", formData.category);
+      formDataToSend.append("grades", JSON.stringify(formData.grades));
+      formDataToSend.append("file", formData.file);
+
+      const response = await fetch("/api/downloads", {
+        method: "POST",
+        body: formDataToSend,
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to create download");
+      }
+
+      const newDownload = await response.json();
+      setDownloads([newDownload, ...downloads]);
+      setSuccessMessage("Download created successfully!");
+
+      // Reset form
       setFormData({
         title: "",
         description: "",
@@ -86,8 +115,67 @@ export default function DownloadsPage() {
         grades: [],
         file: null,
       });
+      setShowAddForm(false);
+
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (err: any) {
+      setCreateError(err.message || "Failed to create download");
+      setTimeout(() => setCreateError(""), 5000);
+    } finally {
       setCreating(false);
-    }, 1200);
+    }
+  };
+
+  // Delete handler
+  const handleDeleteDownload = async (id?: string) => {
+    if (!id) return;
+    setDownloadToDelete(id);
+    setShowDeleteModal(true);
+  };
+
+  // Confirm delete handler
+  const confirmDelete = async () => {
+    if (!downloadToDelete) return;
+    setDeletingId(downloadToDelete);
+    setError("");
+    setSuccessMessage("");
+
+    try {
+      const response = await fetch(`/api/downloads?id=${downloadToDelete}`, {
+        method: "DELETE",
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Failed to delete download");
+      }
+
+      setDownloads((prev) => prev.filter((d) => d.id !== downloadToDelete));
+      setSuccessMessage("Download deleted successfully!");
+      setTimeout(() => setSuccessMessage(""), 3000);
+    } catch (err: any) {
+      setError(err.message || "Could not delete download");
+      setTimeout(() => setError(""), 5000);
+    } finally {
+      setDeletingId(null);
+      setShowDeleteModal(false);
+      setDownloadToDelete(null);
+    }
+  };
+
+  // Cancel delete handler
+  const cancelDelete = () => {
+    setShowDeleteModal(false);
+    setDownloadToDelete(null);
+  };
+
+  // Handle download link click
+  const handleDownloadClick = (id?: string) => {
+    if (!id) return;
+    const download = downloads.find((d) => d.id === id);
+    if (download) {
+      window.open(download.downloadUrl, "_blank");
+    }
   };
 
   return (
@@ -100,14 +188,27 @@ export default function DownloadsPage() {
           {showAddForm ? "Close" : "Add New Download"}
         </Button>
       </div>
+
+      {/* Success and Error Messages */}
+      {successMessage && (
+        <div className="text-center text-green-600 py-2 bg-green-50 rounded-lg mb-4">
+          {successMessage}
+        </div>
+      )}
+      {error && (
+        <div className="text-center text-red-500 py-2 bg-red-50 rounded-lg mb-4">
+          {error}
+        </div>
+      )}
+
       {loading && (
         <div className="text-center py-8">
           <Loader text="Loading downloads..." />
         </div>
       )}
-      {error && <div className="text-center text-red-500 py-2">{error}</div>}
+
       {showAddForm && (
-        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-xl mx-auto">
+        <div className="bg-white p-8 rounded-2xl shadow-lg max-w-xl mx-auto mb-8">
           <form onSubmit={handleSubmit} className="space-y-8">
             <Input
               label="Title"
@@ -183,65 +284,98 @@ export default function DownloadsPage() {
               accept=".pdf"
             />
             {createError && (
-              <div className="text-red-500 text-center">{createError}</div>
+              <div className="text-red-500 text-center bg-red-50 p-2 rounded">
+                {createError}
+              </div>
             )}
             <div className="flex justify-end space-x-2 pt-4">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setShowAddForm(false)}
+                disabled={creating}
               >
                 Cancel
               </Button>
               <Button type="submit" variant="primary" disabled={creating}>
-                {creating ? <Loader text="Adding..." /> : "Add Download"}
+                {creating ? <Loader text="Uploading..." /> : "Add Download"}
               </Button>
             </div>
           </form>
         </div>
       )}
-      {/* Downloads Grid */}
-      {!loading && !error && downloads.length === 0 && (
+
+      {/* Downloads List with DataCard and Pagination */}
+      {!loading && downloads.length === 0 ? (
         <div className="text-center text-gray-500 py-8">
           No downloads found.
         </div>
-      )}
-      {!loading && !error && downloads.length > 0 && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-          {downloads.map((download) => (
-            <div
-              key={download.id}
-              className="bg-white rounded-2xl shadow p-6 flex flex-col gap-2"
-            >
-              <div className="font-bold text-lg text-[#6B21A8]">
-                {download.title}
-              </div>
-              <div className="text-gray-600 text-sm mb-1">
-                {download.description}
-              </div>
-              <div className="flex flex-wrap gap-2 text-xs text-purple-700 mb-2">
-                <span className="bg-purple-100 rounded px-2 py-1">
-                  {download.category}
-                </span>
-                <span className="bg-purple-100 rounded px-2 py-1">
-                  Grades: {download.grades.join(", ")}
-                </span>
-                <span className="bg-purple-100 rounded px-2 py-1">
-                  Uploaded: {download.uploadDate}
-                </span>
-              </div>
-              <a
-                href={download.downloadUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline text-sm font-medium"
-              >
-                Download PDF
-              </a>
-            </div>
-          ))}
+      ) : (
+        <div className="space-y-4 mb-4">
+          <Pagination
+            items={downloads}
+            itemsPerPage={6}
+            className="space-y-4"
+            gridClassName="space-y-2"
+            renderItem={(download) => (
+              <DataCard
+                key={download.id}
+                id={download.id}
+                title={download.title}
+                data={[
+                  {
+                    label: "Description",
+                    value: download.description,
+                  },
+                  {
+                    label: "Category",
+                    value: download.category,
+                  },
+                  {
+                    label: "Grades",
+                    value: download.grades.join(", "),
+                  },
+                  {
+                    label: "Upload Date",
+                    value: download.uploadDate,
+                  },
+                ]}
+                primaryButtonText="Download"
+                onPrimaryButtonClick={handleDownloadClick}
+                primaryButtonVariant="outline"
+                primaryButtonSize="sm"
+                secondaryButtonText={
+                  deletingId === download.id ? "Deleting..." : "Delete"
+                }
+                onSecondaryButtonClick={handleDeleteDownload}
+                secondaryButtonVariant="red"
+                secondaryButtonSize="sm"
+                secondaryButtonClassName={
+                  deletingId === download.id
+                    ? "opacity-50 pointer-events-none"
+                    : ""
+                }
+                cardClassName="p-4"
+                dataClassName="grid grid-cols-2 md:grid-cols-4 gap-3"
+              />
+            )}
+            paginationControlsClassName="flex justify-center items-center gap-2 mt-6"
+            activePageButtonClassName="bg-[#6B21A8] text-white"
+            pageButtonClassName="bg-white text-[#6B21A8] border border-[#6B21A8] hover:bg-gray-50"
+          />
         </div>
       )}
+
+      {/* Confirmation Modal */}
+      <ConfirmationModal
+        open={showDeleteModal}
+        title="Delete Download"
+        description="Are you sure you want to delete this download? This action cannot be undone."
+        confirmText="Yes, Delete"
+        cancelText="Cancel"
+        onConfirm={confirmDelete}
+        onCancel={cancelDelete}
+      />
     </div>
   );
 }
