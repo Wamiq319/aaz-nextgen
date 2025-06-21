@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import SessionProvider from "@/components/SessionProvider";
 import "../globals.css";
 
 export default async function LocaleLayout({
@@ -32,11 +33,13 @@ export default async function LocaleLayout({
         <link rel="icon" href="/assets/images/logo.png" type="image/png" />
       </head>
       <body className={direction}>
-        <NextIntlClientProvider locale={locale} messages={messages}>
-          <Navbar />
-          <main className={direction}>{children}</main>
-          <Footer />
-        </NextIntlClientProvider>
+        <SessionProvider>
+          <NextIntlClientProvider locale={locale} messages={messages}>
+            <Navbar />
+            <main className={direction}>{children}</main>
+            <Footer />
+          </NextIntlClientProvider>
+        </SessionProvider>
       </body>
     </html>
   );
