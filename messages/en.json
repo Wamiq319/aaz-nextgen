@@ -398,33 +398,87 @@
   "ResultsPage": {
     "title": "Results",
     "search": {
-      "placeholder": "Search events...",
+      "placeholder": "Search by roll number or name...",
       "button": "Search",
       "clear": "Clear"
     },
     "filters": {
       "allCities": "All Cities",
-      "allCategories": "All Categories"
+      "allCategories": "All Categories",
+      "allGrades": "All Grades"
     },
     "loading": {
-      "initial": "Loading events...",
-      "searching": "Finding events..."
+      "initial": "Loading event results...",
+      "searching": "Searching results..."
     },
-    "noResults": "No events found matching your criteria",
+    "noResults": "No results match your search criteria",
+    "noResultsPublished": "No results published yet",
+    "studentResults": "Student Results",
+    "backToResults": "Back to Results",
+    "backToEvent": "Back to Event",
+    "backToEventResults": "Back to Event Results",
+    "eventNotFound": "Event not found",
+    "resultNotFound": "Result not found",
+    "error": "Error",
+    "examResult": "Exam Result",
+    "studentDetails": "Student Details",
+    "examDetails": "Exam Details",
+    "eventDetails": "Event Details",
+    "fullName": "Full Name",
+    "fathersName": "Father's Name",
+    "institution": "Institution",
+    "award": "Award",
+    "awardType": "Award Type",
+    "publishedDate": "Published Date",
+    "eventName": "Event Name",
+    "totalParticipants": "Total Participants",
+    "judgesRemarks": "Judge's Remarks",
+    "viewAllResults": "View All Results",
+    "outOf": "out of",
     "eventData": {
       "date": "Date",
       "city": "City",
       "category": "Category",
       "grades": "Grades",
       "participants": "Participants",
-      "status": "Status"
+      "status": "Status",
+      "rollNo": "Roll No",
+      "position": "Position",
+      "grade": "Grade",
+      "score": "Score"
     },
     "status": {
       "published": "Published",
       "draft": "Draft"
     },
     "actions": {
-      "viewResult": "View Result"
+      "viewResult": "View Full Result"
+    }
+  },
+  "DownloadsPage": {
+    "title": "Downloads",
+    "search": {
+      "placeholder": "Search downloads...",
+      "button": "Search",
+      "clear": "Clear"
+    },
+    "filters": {
+      "allCategories": "All Categories",
+      "allGrades": "All Grades"
+    },
+    "loading": {
+      "initial": "Loading downloads...",
+      "searching": "Searching downloads..."
+    },
+    "noResults": "No downloads found matching your criteria",
+    "downloadData": {
+      "description": "Description",
+      "category": "Category",
+      "grades": "Grades",
+      "uploadDate": "Upload Date"
+    },
+    "actions": {
+      "download": "Download"
     }
   }
 }

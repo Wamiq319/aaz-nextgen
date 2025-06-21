@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/Button";
 import { Dropdown } from "@/components/ui/DropDown";
 import { Loader } from "@/components/ui/Loader";
 import { useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 import { Event } from "@/lib/types/events";
 import { Result } from "@/lib/types/results";
 
@@ -16,6 +17,7 @@ export default function EventResultsPage() {
   const params = useParams();
   const eventId = params.eventId as string;
   const router = useRouter();
+  const t = useTranslations("ResultsPage");
 
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGrade, setSelectedGrade] = useState("All");
@@ -70,7 +72,7 @@ export default function EventResultsPage() {
   }, [eventId]);
 
   const gradeOptions = [
-    { value: "All", label: "All Grades" },
+    { value: "All", label: t("filters.allGrades") },
     ...(event?.grades || [])
       .sort((a, b) => parseInt(a) - parseInt(b))
       .map((grade) => ({
@@ -122,7 +124,7 @@ export default function EventResultsPage() {
     return (
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-center items-center h-64">
-          <Loader text="Loading event results..." />
+          <Loader text={t("loading.initial")} />
         </div>
       </div>
     );
@@ -132,14 +134,14 @@ export default function EventResultsPage() {
   if (error) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+        <h1 className="text-2xl font-bold text-red-600 mb-4">{t("error")}</h1>
         <p className="text-gray-600">{error}</p>
         <Button
           variant="outline"
           onClick={() => router.push("/result")}
           className="mt-4"
         >
-          Back to Results
+          {t("backToResults")}
         </Button>
       </div>
     );
@@ -150,14 +152,14 @@ export default function EventResultsPage() {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
         <h1 className="text-2xl font-bold text-red-600 mb-4">
-          Event not found
+          {t("eventNotFound")}
         </h1>
         <Button
           variant="outline"
           onClick={() => router.push("/result")}
           className="mt-4"
         >
-          Back to Results
+          {t("backToResults")}
         </Button>
       </div>
     );
@@ -181,7 +183,7 @@ export default function EventResultsPage() {
         <div className="flex-1 w-full md:w-auto">
           <Input
             type="text"
-            placeholder="Search by roll number or name..."
+            placeholder={t("search.placeholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             fullWidth
@@ -201,7 +203,7 @@ export default function EventResultsPage() {
           className="w-full md:w-auto"
           disabled={isLoading}
         >
-          {isLoading ? <Loader /> : "Search"}
+          {isLoading ? <Loader /> : t("search.button")}
         </Button>
 
         <Button
@@ -210,19 +212,19 @@ export default function EventResultsPage() {
           className="w-full md:w-auto"
           disabled={isLoading}
         >
-          Clear
+          {t("search.clear")}
         </Button>
       </div>
 
       {/* Results Section */}
       <div className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-[#6B21A8] border-b pb-2">
-          Student Results
+          {t("studentResults")}
         </h2>
 
         {isLoading ? (
           <div className="flex justify-center items-center h-40">
-            <Loader text="Searching results..." />
+            <Loader text={t("loading.searching")} />
           </div>
         ) : filteredResults.length > 0 ? (
           <Pagination
@@ -236,20 +238,26 @@ export default function EventResultsPage() {
                 key={result.resultId}
                 className="hover:bg-gray-50 transition-colors"
                 data={[
-                  { label: "Roll No", value: result.examData.rollNumber },
-                  { label: "Position", value: `#${result.examData.position}` },
                   {
-                    label: "Grade",
+                    label: t("eventData.rollNo"),
+                    value: result.examData.rollNumber,
+                  },
+                  {
+                    label: t("eventData.position"),
+                    value: `#${result.examData.position}`,
+                  },
+                  {
+                    label: t("eventData.grade"),
                     value: result.student.grade,
                     className: "font-bold",
                   },
                   {
-                    label: "Score",
+                    label: t("eventData.score"),
                     value: `${result.examData.score}%`,
                     className: "font-bold",
                   },
                 ]}
-                primaryButtonText="View Full Result"
+                primaryButtonText={t("actions.viewResult")}
                 onPrimaryButtonClick={() => handleViewResult(result.resultId)}
                 primaryButtonVariant="outline"
                 primaryButtonSize="sm"
@@ -265,8 +273,8 @@ export default function EventResultsPage() {
           <div className="text-center py-12">
             <p className="text-xl text-gray-600">
               {eventResults.length === 0
-                ? "No results published yet"
-                : "No results match your search criteria"}
+                ? t("noResultsPublished")
+                : t("noResults")}
             </p>
           </div>
         )}

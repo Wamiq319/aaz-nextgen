@@ -8,28 +8,22 @@ import { Loader } from "@/components/ui/Loader";
 import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
 import { DataCard } from "@/components/ui/DataCard";
 import { Pagination } from "@/components/Pagination";
+import { Download, DownloadCategory } from "@/lib/types/downloads";
 
 const categoryOptions = [
-  { value: "Past Papers", label: "Past Papers" },
-  { value: "Guide Books", label: "Guide Books" },
-  { value: "Forms", label: "Forms" },
-  { value: "Reference Books", label: "Reference Books" },
-  { value: "Brochures", label: "Brochures" },
-  { value: "Books", label: "Books" },
+  { value: DownloadCategory.PastPapers, label: DownloadCategory.PastPapers },
+  { value: DownloadCategory.GuideBooks, label: DownloadCategory.GuideBooks },
+  { value: DownloadCategory.Forms, label: DownloadCategory.Forms },
+  {
+    value: DownloadCategory.ReferenceBooks,
+    label: DownloadCategory.ReferenceBooks,
+  },
+  { value: DownloadCategory.Brochures, label: DownloadCategory.Brochures },
+  { value: DownloadCategory.Books, label: DownloadCategory.Books },
 ];
 
-type DownloadType = {
-  id: string;
-  title: string;
-  description: string;
-  category: string;
-  downloadUrl: string;
-  uploadDate: string;
-  grades: string[];
-};
-
 export default function DownloadsPage() {
-  const [downloads, setDownloads] = useState<DownloadType[]>([]);
+  const [downloads, setDownloads] = useState<Download[]>([]);
   const [showAddForm, setShowAddForm] = useState(false);
   const [formData, setFormData] = useState({
     title: "",
@@ -236,7 +230,10 @@ export default function DownloadsPage() {
                 className="w-full border-0 border-b-2 border-[#E9D5FF] focus:border-[#6B21A8] rounded-none shadow-none bg-transparent py-2"
                 value={formData.category}
                 onChange={(e) =>
-                  setFormData({ ...formData, category: e.target.value })
+                  setFormData({
+                    ...formData,
+                    category: e.target.value as DownloadCategory,
+                  })
                 }
                 required
               >

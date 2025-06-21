@@ -1,13 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-
-export enum DownloadCategory {
-  PastPapers = "Past Papers",
-  GuideBooks = "Guide Books",
-  Forms = "Forms",
-  ReferenceBooks = "Reference Books",
-  Brochures = "Brochures",
-  Books = "Books",
-}
+import { DownloadCategory } from "../types/downloads";
 
 export interface IDownload extends Document {
   id: string;
@@ -33,5 +25,10 @@ const DownloadSchema: Schema = new Schema({
   grades: [{ type: String, required: true }],
 });
 
-export default mongoose.models.Download ||
+// Only create the model on the server side
+const Download =
+  mongoose.models.Download ||
   mongoose.model<IDownload>("Download", DownloadSchema);
+
+export default Download;
+export { DownloadCategory };

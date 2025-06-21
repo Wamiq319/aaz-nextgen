@@ -413,33 +413,87 @@
   "ResultsPage": {
     "title": "نتائج",
     "search": {
-      "placeholder": "ایونٹس تلاش کریں...",
+      "placeholder": "رول نمبر یا نام سے تلاش کریں...",
       "button": "تلاش کریں",
       "clear": "صاف کریں"
     },
     "filters": {
       "allCities": "تمام شہر",
-      "allCategories": "تمام زمرے"
+      "allCategories": "تمام زمرے",
+      "allGrades": "تمام گریڈز"
     },
     "loading": {
-      "initial": "ایونٹس لوڈ ہو رہے ہیں...",
-      "searching": "ایونٹس تلاش کیے جا رہے ہیں..."
+      "initial": "ایونٹ کے نتائج لوڈ ہو رہے ہیں...",
+      "searching": "نتائج تلاش کیے جا رہے ہیں..."
     },
-    "noResults": "آپ کے معیارات کے مطابق کوئی ایونٹ نہیں ملا",
+    "noResults": "آپ کے تلاش کے معیارات کے مطابق کوئی نتیجہ نہیں ملا",
+    "noResultsPublished": "ابھی تک کوئی نتیجہ شائع نہیں ہوا",
+    "studentResults": "طلباء کے نتائج",
+    "backToResults": "نتائج کی طرف واپس",
+    "backToEvent": "ایونٹ کی طرف واپس",
+    "backToEventResults": "ایونٹ کے نتائج کی طرف واپس",
+    "eventNotFound": "ایونٹ نہیں ملا",
+    "resultNotFound": "نتیجہ نہیں ملا",
+    "error": "خرابی",
+    "examResult": "امتحان کا نتیجہ",
+    "studentDetails": "طالب علم کی تفصیلات",
+    "examDetails": "امتحان کی تفصیلات",
+    "eventDetails": "ایونٹ کی تفصیلات",
+    "fullName": "پورا نام",
+    "fathersName": "والد کا نام",
+    "institution": "ادارہ",
+    "award": "انعام",
+    "awardType": "انعام کی قسم",
+    "publishedDate": "شائع شدہ تاریخ",
+    "eventName": "ایونٹ کا نام",
+    "totalParticipants": "کل شرکاء",
+    "judgesRemarks": "جج کی رائے",
+    "viewAllResults": "تمام نتائج دیکھیں",
+    "outOf": "میں سے",
     "eventData": {
       "date": "تاریخ",
       "city": "شہر",
       "category": "زمرہ",
       "grades": "گریڈز",
       "participants": "شرکاء",
-      "status": "حیثیت"
+      "status": "حیثیت",
+      "rollNo": "رول نمبر",
+      "position": "پوزیشن",
+      "grade": "گریڈ",
+      "score": "اسکور"
     },
     "status": {
       "published": "شائع شدہ",
       "draft": "ڈرافٹ"
     },
     "actions": {
-      "viewResult": "نتیجہ دیکھیں"
+      "viewResult": "مکمل نتیجہ دیکھیں"
+    }
+  },
+  "DownloadsPage": {
+    "title": "ڈاؤن لوڈز",
+    "search": {
+      "placeholder": "ڈاؤن لوڈز تلاش کریں...",
+      "button": "تلاش کریں",
+      "clear": "صاف کریں"
+    },
+    "filters": {
+      "allCategories": "تمام زمرے",
+      "allGrades": "تمام گریڈز"
+    },
+    "loading": {
+      "initial": "ڈاؤن لوڈز لوڈ ہو رہے ہیں...",
+      "searching": "ڈاؤن لوڈز تلاش کیے جا رہے ہیں..."
+    },
+    "noResults": "آپ کے معیارات کے مطابق کوئی ڈاؤن لوڈ نہیں ملا",
+    "downloadData": {
+      "description": "تفصیل",
+      "category": "زمرہ",
+      "grades": "گریڈز",
+      "uploadDate": "اپ لوڈ کی تاریخ"
+    },
+    "actions": {
+      "download": "ڈاؤن لوڈ کریں"
     }
   }
 }
