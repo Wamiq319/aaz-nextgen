@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { signIn, getSession, useSession } from "next-auth/react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
+import { signIn, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Loader } from "lucide-react";
 
 export default function LoginPage() {
@@ -12,8 +12,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
-  const searchParams = useSearchParams();
-  const callbackUrl = searchParams.get("callbackUrl") || "/admin";
   const { data: session, status } = useSession();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,13 +24,14 @@ export default function LoginPage() {
         email,
         password,
         redirect: false,
-        callbackUrl,
       });
 
       if (result?.error) {
         setError(result.error);
-      } else if (result?.url) {
-        router.push(result.url);
+      } else {
+        // Show success or reload page, or optionally route to /admin
+        // router.push("/admin");
+        window.location.reload(); // reload to update session
       }
     } catch (error) {
       setError("An unexpected error occurred");
@@ -41,11 +40,28 @@ export default function LoginPage() {
     }
   };
 
-  useEffect(() => {
-    if (status === "authenticated") {
-      router.replace(callbackUrl);
-    }
-  }, [status, router, callbackUrl]);
+  if (status === "authenticated") {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#F3E8FF] via-white to-[#E0E7FF] flex items-center justify-center p-4">
+        <div className="w-full max-w-md">
+          <div className="bg-white rounded-2xl shadow-xl p-8 border-0 text-center">
+            <h1 className="text-3xl font-bold text-[#6B21A8] mb-2">
+              Already logged in
+            </h1>
+            <p className="text-gray-600 mb-6">
+              You are already logged in. Click below to go to Admin.
+            </p>
+            <button
+              onClick={() => router.push("/admin")}
+              className="w-full bg-gradient-to-r from-[#6B21A8] to-[#D63384] text-white py-3 px-4 rounded-lg font-medium hover:from-[#581C87] hover:to-[#BE185D] transition-all duration-200"
+            >
+              Go to Admin
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F3E8FF] via-white to-[#E0E7FF] flex items-center justify-center p-4">
