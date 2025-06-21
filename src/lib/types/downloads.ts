@@ -11,8 +11,9 @@ export interface Download {
   id: string;
   title: string;
   description: string;
-  category: string;
+  category: DownloadCategory;
   downloadUrl: string;
+  cloudinaryPublicId: string;
   uploadDate: string;
   grades: string[];
 }

@@ -83,7 +83,7 @@ export default function DownloadsPage() {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
-      formDataToSend.append("category", formData.category);
+      formDataToSend.append("category", String(formData.category));
       formDataToSend.append("grades", JSON.stringify(formData.grades));
       formDataToSend.append("file", formData.file);
 
@@ -163,12 +163,41 @@ export default function DownloadsPage() {
     setDownloadToDelete(null);
   };
 
-  // Handle download link click
-  const handleDownloadClick = (id?: string) => {
+  // Handle download link click - Improved version
+  const handleDownloadClick = async (id?: string) => {
     if (!id) return;
     const download = downloads.find((d) => d.id === id);
-    if (download) {
-      window.open(download.downloadUrl, "_blank");
+    if (download && download.downloadUrl) {
+      try {
+        // For Cloudinary URLs, we need to add transformation parameters for download
+        let downloadUrl = download.downloadUrl;
+
+        // If it's a Cloudinary URL, add download transformation
+        if (downloadUrl.includes("cloudinary.com")) {
+          // Add transformation to force download
+          if (!downloadUrl.includes("fl_attachment")) {
+            downloadUrl = downloadUrl.replace(
+              "/upload/",
+              "/upload/fl_attachment/"
+            );
+          }
+        }
+
+        // Create a temporary link element to trigger download
+        const link = document.createElement("a");
+        link.href = downloadUrl;
+        link.download = `${download.title.replace(/[^a-zA-Z0-9]/g, "_")}.pdf`;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      } catch (error) {
+        console.error("Download error:", error);
+        // Fallback: open in new tab
+        window.open(download.downloadUrl, "_blank");
+      }
     }
   };
 

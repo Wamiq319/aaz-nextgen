@@ -38,6 +38,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate file type
+    if (file.type !== "application/pdf") {
+      return NextResponse.json(
+        { error: "Only PDF files are allowed" },
+        { status: 400 }
+      );
+    }
+
     // Validate category
     if (
       !Object.values(DownloadCategory).includes(category as DownloadCategory)
@@ -49,6 +57,15 @@ export async function POST(request: NextRequest) {
     const bytes = await file.arrayBuffer();
     const buffer = Buffer.from(bytes);
 
+    // Generate a clean filename for Cloudinary
+    const timestamp = Date.now();
+    const cleanFileName = file.name
+      .replace(/[^a-zA-Z0-9.-]/g, "_") // Replace special chars with underscore
+      .replace(/\.pdf$/i, "") // Remove .pdf extension
+      .trim(); // Remove any whitespace
+
+    const publicId = `aaz-nextgen/downloads/${timestamp}_${cleanFileName}`;
+
     // Upload to Cloudinary
     const uploadResult = await new Promise((resolve, reject) => {
       cloudinary.uploader
@@ -56,8 +73,9 @@ export async function POST(request: NextRequest) {
           {
             resource_type: "raw",
             folder: "aaz-nextgen/downloads",
-            public_id: `${Date.now()}_${file.name.replace(/\.[^/.]+$/, "")}`,
+            public_id: publicId,
             format: "pdf",
+            flags: "attachment", // This makes the file downloadable
           },
           (error, result) => {
             if (error) reject(error);
@@ -69,13 +87,14 @@ export async function POST(request: NextRequest) {
 
     const cloudinaryResult = uploadResult as any;
 
-    // Create download record
+    // Create download record with cloudinaryPublicId
     const download = new Download({
-      id: `download_${Date.now()}`,
+      id: `download_${timestamp}`,
       title,
       description,
       category,
       downloadUrl: cloudinaryResult.secure_url,
+      cloudinaryPublicId: cloudinaryResult.public_id, // Store the public_id
       uploadDate: new Date().toISOString().slice(0, 10),
       grades,
     });
@@ -116,22 +135,41 @@ export async function DELETE(request: NextRequest) {
       );
     }
 
-    // Delete from Cloudinary if URL exists
-    if (download.downloadUrl) {
+    // Delete from Cloudinary using stored public_id
+    if (download.cloudinaryPublicId) {
       try {
-        const publicId = download.downloadUrl.split("/").pop()?.split(".")[0];
-        if (publicId) {
-          await cloudinary.uploader.destroy(publicId, { resource_type: "raw" });
+        console.log(`Deleting from Cloudinary: ${download.cloudinaryPublicId}`);
+
+        const result = await cloudinary.uploader.destroy(
+          download.cloudinaryPublicId,
+          { resource_type: "raw" }
+        );
+
+        console.log("Cloudinary deletion result:", result);
+
+        if (result.result === "ok") {
+          console.log("✅ File deleted from Cloudinary successfully");
+        } else {
+          console.log("⚠️ Cloudinary deletion may have failed:", result);
         }
       } catch (cloudinaryError) {
-        console.error("Error deleting from Cloudinary:", cloudinaryError);
+        console.error("❌ Error deleting from Cloudinary:", cloudinaryError);
         // Continue with database deletion even if Cloudinary deletion fails
       }
+    } else {
+      console.log(
+        "⚠️ No cloudinaryPublicId found, skipping Cloudinary deletion"
+      );
     }
 
+    // Delete from database
     await Download.deleteOne({ id });
+    console.log("✅ Download deleted from database");
 
-    return NextResponse.json({ message: "Download deleted successfully" });
+    return NextResponse.json({
+      message: "Download deleted successfully",
+      cloudinaryDeleted: !!download.cloudinaryPublicId,
+    });
   } catch (error) {
     console.error("Error deleting download:", error);
     return NextResponse.json(
