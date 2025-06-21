@@ -9,6 +9,17 @@ export async function GET(req: NextRequest) {
   await dbConnect();
   const { searchParams } = new URL(req.url);
   const fields = searchParams.get("fields");
+  const id = searchParams.get("id");
+
+  if (id) {
+    // Fetch single event by eventId
+    const event = await Event.findOne({ eventId: id });
+    if (!event) {
+      return NextResponse.json({ error: "Event not found" }, { status: 404 });
+    }
+    return NextResponse.json(event);
+  }
+
   let events;
   if (fields === "id,name") {
     events = await Event.find({}, { eventId: 1, eventName: 1, _id: 0 });

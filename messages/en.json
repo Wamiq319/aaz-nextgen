@@ -394,5 +394,37 @@
       "title": "Follow Us",
       "description": "Stay connected with AAZ Nextgen for updates, learning tips, and more."
     }
+  },
+  "ResultsPage": {
+    "title": "Results",
+    "search": {
+      "placeholder": "Search events...",
+      "button": "Search",
+      "clear": "Clear"
+    },
+    "filters": {
+      "allCities": "All Cities",
+      "allCategories": "All Categories"
+    },
+    "loading": {
+      "initial": "Loading events...",
+      "searching": "Finding events..."
+    },
+    "noResults": "No events found matching your criteria",
+    "eventData": {
+      "date": "Date",
+      "city": "City",
+      "category": "Category",
+      "grades": "Grades",
+      "participants": "Participants",
+      "status": "Status"
+    },
+    "status": {
+      "published": "Published",
+      "draft": "Draft"
+    },
+    "actions": {
+      "viewResult": "View Result"
+    }
   }
 }

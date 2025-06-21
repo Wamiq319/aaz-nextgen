@@ -1,19 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-
-export enum EventCategory {
-  Math = "Math",
-  Science = "Science",
-  English = "English",
-  Urdu = "Urdu",
-  ComputerScience = "Computer Science",
-  Biology = "Biology",
-  Art = "Art",
-  Literature = "Literature",
-  History = "History",
-  Geography = "Geography",
-  Physics = "Physics",
-  Chemistry = "Chemistry",
-}
+import { EventCategory } from "../types/events";
 
 export interface IEvent extends Document {
   eventId: string;
@@ -41,5 +27,9 @@ const EventSchema: Schema = new Schema({
   totalParticipants: { type: Number, required: true },
 });
 
-export default mongoose.models.Event ||
-  mongoose.model<IEvent>("Event", EventSchema);
+// Only create the model on the server side
+const Event =
+  mongoose.models.Event || mongoose.model<IEvent>("Event", EventSchema);
+
+export default Event;
+export { EventCategory };

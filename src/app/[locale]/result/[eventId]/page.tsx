@@ -1,8 +1,6 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import eventsData from "@/data/events.json";
-import resultsData from "@/data/results.json";
 import { DataCard } from "@/components/ui/DataCard";
 import { useRouter } from "next/navigation";
 import { Pagination } from "@/components/Pagination";
@@ -10,7 +8,9 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Dropdown } from "@/components/ui/DropDown";
 import { Loader } from "@/components/ui/Loader";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { Event } from "@/lib/types/events";
+import { Result } from "@/lib/types/results";
 
 export default function EventResultsPage() {
   const params = useParams();
@@ -20,22 +20,54 @@ export default function EventResultsPage() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedGrade, setSelectedGrade] = useState("All");
   const [isLoading, setIsLoading] = useState(false);
+  const [isInitialLoading, setIsInitialLoading] = useState(true);
+  const [event, setEvent] = useState<Event | null>(null);
+  const [eventResults, setEventResults] = useState<Result[]>([]);
+  const [filteredResults, setFilteredResults] = useState<Result[]>([]);
+  const [error, setError] = useState("");
 
-  // Find the event
-  const event = eventsData.find((e) => e.eventId === eventId);
+  // Fetch event and results data
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        setIsInitialLoading(true);
+        setError("");
 
-  // Get all results for this event
-  const eventResults = resultsData.filter(
-    (result) => result.eventId === eventId
-  );
+        // Fetch event data
+        const eventResponse = await fetch(`/api/event?id=${eventId}`);
+        if (!eventResponse.ok) {
+          throw new Error("Event not found");
+        }
+        const eventData = await eventResponse.json();
+        setEvent(eventData);
 
-  // Filtered results initially include all valid results
-  const initialFilteredResults = eventResults.filter((result) =>
-    event?.grades.includes(result.student.grade)
-  );
-  const [filteredResults, setFilteredResults] = useState(
-    initialFilteredResults
-  );
+        // Fetch all results and filter by eventId
+        const resultsResponse = await fetch("/api/results");
+        if (!resultsResponse.ok) {
+          throw new Error("Failed to fetch results");
+        }
+        const allResults = await resultsResponse.json();
+        const eventResultsData = allResults.filter(
+          (result: Result) => result.eventId === eventId
+        );
+        setEventResults(eventResultsData);
+
+        // Filter results by valid grades
+        const validResults = eventResultsData.filter((result: Result) =>
+          eventData.grades.includes(result.student.grade)
+        );
+        setFilteredResults(validResults);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : "Failed to load data");
+      } finally {
+        setIsInitialLoading(false);
+      }
+    };
+
+    if (eventId) {
+      fetchData();
+    }
+  }, [eventId]);
 
   const gradeOptions = [
     { value: "All", label: "All Grades" },
@@ -56,6 +88,9 @@ export default function EventResultsPage() {
         const matchesSearch = searchTerm
           ? result.examData.rollNumber
               .toLowerCase()
+              .includes(searchTerm.toLowerCase()) ||
+            result.student.fullName
+              .toLowerCase()
               .includes(searchTerm.toLowerCase())
           : true;
         const matchesGrade =
@@ -73,10 +108,57 @@ export default function EventResultsPage() {
     router.push(`/result/${eventId}/${resultId}`);
   };
 
+  const handleClear = () => {
+    setSearchTerm("");
+    setSelectedGrade("All");
+    const validResults = eventResults.filter((result) =>
+      event?.grades.includes(result.student.grade)
+    );
+    setFilteredResults(validResults);
+  };
+
+  // Show loading state while fetching initial data
+  if (isInitialLoading) {
+    return (
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex justify-center items-center h-64">
+          <Loader text="Loading event results..." />
+        </div>
+      </div>
+    );
+  }
+
+  // Show error state
+  if (error) {
+    return (
+      <div className="container mx-auto px-4 py-8 text-center">
+        <h1 className="text-2xl font-bold text-red-600 mb-4">Error</h1>
+        <p className="text-gray-600">{error}</p>
+        <Button
+          variant="outline"
+          onClick={() => router.push("/result")}
+          className="mt-4"
+        >
+          Back to Results
+        </Button>
+      </div>
+    );
+  }
+
+  // Show not found state
   if (!event) {
     return (
       <div className="container mx-auto px-4 py-8 text-center">
-        <h1 className="text-2xl font-bold text-red-600">Event not found</h1>
+        <h1 className="text-2xl font-bold text-red-600 mb-4">
+          Event not found
+        </h1>
+        <Button
+          variant="outline"
+          onClick={() => router.push("/result")}
+          className="mt-4"
+        >
+          Back to Results
+        </Button>
       </div>
     );
   }
@@ -117,17 +199,14 @@ export default function EventResultsPage() {
           variant="primary"
           onClick={handleSearch}
           className="w-full md:w-auto"
+          disabled={isLoading}
         >
           {isLoading ? <Loader /> : "Search"}
         </Button>
 
         <Button
           variant="outline"
-          onClick={() => {
-            setSearchTerm("");
-            setSelectedGrade("All");
-            setFilteredResults(initialFilteredResults);
-          }}
+          onClick={handleClear}
           className="w-full md:w-auto"
           disabled={isLoading}
         >
@@ -151,7 +230,7 @@ export default function EventResultsPage() {
             itemsPerPage={5}
             className="space-y-4"
             gridClassName="space-y-3"
-            renderItem={(result) => (
+            renderItem={(result: Result) => (
               <DataCard
                 title={result.student.fullName}
                 key={result.resultId}
@@ -170,10 +249,10 @@ export default function EventResultsPage() {
                     className: "font-bold",
                   },
                 ]}
-                buttonText="View Full Result"
-                onButtonClick={() => handleViewResult(result.resultId)}
-                buttonVariant="outline"
-                buttonSize="sm"
+                primaryButtonText="View Full Result"
+                onPrimaryButtonClick={() => handleViewResult(result.resultId)}
+                primaryButtonVariant="outline"
+                primaryButtonSize="sm"
                 cardClassName="p-4"
                 dataClassName="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3"
               />

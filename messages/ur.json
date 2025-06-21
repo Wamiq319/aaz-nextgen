@@ -409,5 +409,37 @@
         "status": "رجسٹریشن کھلی ہے"
       }
     }
+  },
+  "ResultsPage": {
+    "title": "نتائج",
+    "search": {
+      "placeholder": "ایونٹس تلاش کریں...",
+      "button": "تلاش کریں",
+      "clear": "صاف کریں"
+    },
+    "filters": {
+      "allCities": "تمام شہر",
+      "allCategories": "تمام زمرے"
+    },
+    "loading": {
+      "initial": "ایونٹس لوڈ ہو رہے ہیں...",
+      "searching": "ایونٹس تلاش کیے جا رہے ہیں..."
+    },
+    "noResults": "آپ کے معیارات کے مطابق کوئی ایونٹ نہیں ملا",
+    "eventData": {
+      "date": "تاریخ",
+      "city": "شہر",
+      "category": "زمرہ",
+      "grades": "گریڈز",
+      "participants": "شرکاء",
+      "status": "حیثیت"
+    },
+    "status": {
+      "published": "شائع شدہ",
+      "draft": "ڈرافٹ"
+    },
+    "actions": {
+      "viewResult": "نتیجہ دیکھیں"
+    }
   }
 }

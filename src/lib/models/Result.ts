@@ -1,28 +1,5 @@
 import mongoose, { Schema, Document } from "mongoose";
-
-interface Institution {
-  name: string;
-  campus: string;
-}
-
-interface Student {
-  fullName: string;
-  fatherName: string;
-  grade: string;
-  institution: Institution;
-}
-
-interface ExamData {
-  rollNumber: string;
-  score: number;
-  position: number;
-}
-
-interface Awards {
-  hasWon: boolean;
-  awardName: string;
-  awardType: string;
-}
+import { Institution, Student, ExamData, Awards } from "../types/results";
 
 export interface IResult extends Document {
   resultId: string;
@@ -60,5 +37,8 @@ const ResultSchema: Schema = new Schema({
   publishedDate: { type: String, required: true },
 });
 
-export default mongoose.models.Result ||
-  mongoose.model<IResult>("Result", ResultSchema);
+// Only create the model on the server side
+const Result =
+  mongoose.models.Result || mongoose.model<IResult>("Result", ResultSchema);
+
+export default Result;

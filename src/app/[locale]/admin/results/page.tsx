@@ -9,13 +9,13 @@ import { DataCard } from "@/components/ui/DataCard";
 import { Loader } from "@/components/ui/Loader";
 import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
 import { useRouter } from "next/navigation";
+import { Result } from "@/lib/types/results";
+import { Event } from "@/lib/types/events";
 
 export default function ResultsPage() {
-  const [results, setResults] = useState<any[]>([]);
-  const [events, setEvents] = useState<any[]>([]);
-  const [students, setStudents] = useState<any[]>([]);
+  const [results, setResults] = useState<Result[]>([]);
+  const [events, setEvents] = useState<Event[]>([]);
   const [selectedEvent, setSelectedEvent] = useState("");
-  const [selectedStudent, setSelectedStudent] = useState("");
   const [showAddForm, setShowAddForm] = useState(false);
 
   const [formData, setFormData] = useState({
@@ -404,7 +404,7 @@ export default function ResultsPage() {
             No results found.
           </div>
         ) : (
-          filteredResults.map((result: any) => (
+          filteredResults.map((result: Result) => (
             <DataCard
               key={result.resultId}
               id={result.resultId}
@@ -413,7 +413,7 @@ export default function ResultsPage() {
                 {
                   label: "Event",
                   value:
-                    events.find((e: any) => e.eventId === result.eventId)
+                    events.find((e: Event) => e.eventId === result.eventId)
                       ?.eventName || "Unknown",
                 },
                 {

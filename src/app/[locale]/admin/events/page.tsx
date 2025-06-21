@@ -10,27 +10,13 @@ import { Button } from "@/components/ui/Button";
 import { Dropdown } from "@/components/ui/DropDown";
 import { Loader } from "@/components/ui/Loader";
 import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
+import { EventCategory, Event as EventType } from "@/lib/types/events";
 
-// Define the event type
-type EventType = {
-  eventId: string;
-  eventName: string;
-  examDate: string;
-  city: string;
-  category: string;
-  grades: string[];
-  isPublished: boolean;
-  totalParticipants: number;
-};
-
-const categoryOptions = [
-  { value: "Math", label: "Math" },
-  { value: "Science", label: "Science" },
-  { value: "English", label: "English" },
-  { value: "Urdu", label: "Urdu" },
-  { value: "Computer Science", label: "Computer Science" },
-  { value: "Biology", label: "Biology" },
-];
+// Generate category options from the enum
+const categoryOptions = Object.values(EventCategory).map((category) => ({
+  value: category,
+  label: category,
+}));
 
 export default function CreateEventPage() {
   const router = useRouter();
@@ -46,7 +32,7 @@ export default function CreateEventPage() {
     eventName: "",
     examDate: "",
     city: "",
-    category: "Math",
+    category: EventCategory.Math,
     grades: [],
     isPublished: false,
     totalParticipants: 0,
@@ -102,7 +88,7 @@ export default function CreateEventPage() {
         eventName: "",
         examDate: "",
         city: "",
-        category: "Math",
+        category: EventCategory.Math,
         grades: [],
         isPublished: false,
         totalParticipants: 0,
