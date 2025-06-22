@@ -65,7 +65,7 @@ export default function AdminLayout({
 
   // Redirect if not authenticated
   if (status === "unauthenticated") {
-    router.push("/login");
+    router.replace("/login");
     return null;
   }
 
