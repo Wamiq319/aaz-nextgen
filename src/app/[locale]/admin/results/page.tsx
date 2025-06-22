@@ -195,7 +195,7 @@ export default function ResultsPage() {
   return (
     <div>
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-2xl font-bold text-[#6B21A8]">
+        <h1 className="text-xl sm:text-2xl font-bold text-[#6B21A8] break-words">
           Results Management
         </h1>
         <Button onClick={() => setShowAddForm((v) => !v)}>

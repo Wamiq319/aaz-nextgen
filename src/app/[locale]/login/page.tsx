@@ -4,6 +4,7 @@ import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { Eye, EyeOff, Loader } from "lucide-react";
+import { Button } from "@/components/ui/Button";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -29,9 +30,7 @@ export default function LoginPage() {
       if (result?.error) {
         setError(result.error);
       } else {
-        // Show success or reload page, or optionally route to /admin
-        // router.push("/admin");
-        window.location.reload(); // reload to update session
+        router.replace("/admin");
       }
     } catch (error) {
       setError("An unexpected error occurred");
@@ -51,12 +50,13 @@ export default function LoginPage() {
             <p className="text-gray-600 mb-6">
               You are already logged in. Click below to go to Admin.
             </p>
-            <button
-              onClick={() => router.push("/admin")}
-              className="w-full bg-gradient-to-r from-[#6B21A8] to-[#D63384] text-white py-3 px-4 rounded-lg font-medium hover:from-[#581C87] hover:to-[#BE185D] transition-all duration-200"
+            <Button
+              onClick={() => router.replace("/admin")}
+              variant="primary"
+              className="w-full"
             >
               Go to Admin
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -132,10 +132,11 @@ export default function LoginPage() {
               </div>
             </div>
 
-            <button
+            <Button
               type="submit"
+              variant="primary"
+              className="w-full"
               disabled={loading}
-              className="w-full bg-gradient-to-r from-[#6B21A8] to-[#D63384] text-white py-3 px-4 rounded-lg font-medium hover:from-[#581C87] hover:to-[#BE185D] transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
             >
               {loading ? (
                 <>
@@ -145,7 +146,7 @@ export default function LoginPage() {
               ) : (
                 "Sign In"
               )}
-            </button>
+            </Button>
           </form>
 
           <div className="mt-6 text-center">

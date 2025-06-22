@@ -5,6 +5,7 @@ import { Home, Calendar, Award, Download } from "lucide-react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/Button";
 
 const navLinks = [
   { href: "/admin", icon: Home, label: "Dashboard" },
@@ -69,9 +70,30 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
-      {/* Sidebar */}
-      <div className="w-16 md:w-56 border-r bg-white p-2 md:p-4 flex flex-col items-center md:items-stretch">
+    <div className="flex min-h-screen bg-gray-50 flex-col md:flex-row">
+      {/* Topbar for mobile */}
+      <div className="flex md:hidden w-full bg-white border-b p-2 items-center justify-between">
+        <nav className="flex flex-1 justify-between gap-2">
+          {navLinks.map(({ href, icon: Icon, label }) => {
+            const isActive = pathname === href;
+            return (
+              <Button
+                key={href}
+                variant={isActive ? "primary" : "outline"}
+                className={`flex flex-col items-center justify-center min-w-0 px-0.5 py-0.5 text-xs ${
+                  isActive ? "text-white" : "text-[#6B21A8]"
+                }`}
+                onClick={() => router.replace(href)}
+              >
+                <Icon className="h-4 w-4 mx-auto" />
+              </Button>
+            );
+          })}
+        </nav>
+      </div>
+
+      {/* Sidebar for desktop */}
+      <div className="hidden md:flex w-16 md:w-56 border-r bg-white p-2 md:p-4 flex-col items-center md:items-stretch">
         <h2 className="hidden md:block text-lg font-semibold mb-6 px-2">
           Admin Panel
         </h2>
@@ -88,21 +110,17 @@ export default function AdminLayout({
           {navLinks.map(({ href, icon: Icon, label }) => {
             const isActive = pathname === href;
             return (
-              <Link
+              <Button
                 key={href}
-                href={href}
-                className={`flex items-center gap-3 px-2 py-2 rounded-md text-sm transition-colors
-                  ${
-                    isActive
-                      ? "bg-gradient-to-r from-[#6B21A8] to-[#D63384] text-white"
-                      : "hover:bg-gray-100 text-[#6B21A8]"
-                  }
-                `}
-                aria-current={isActive ? "page" : undefined}
+                variant={isActive ? "primary" : "outline"}
+                className={`flex items-center gap-3 w-full justify-start ${
+                  isActive ? "text-white" : "text-[#6B21A8]"
+                }`}
+                onClick={() => router.replace(href)}
               >
                 <Icon className="h-5 w-5" />
                 <span className="hidden md:inline">{label}</span>
-              </Link>
+              </Button>
             );
           })}
         </nav>
