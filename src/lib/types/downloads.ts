@@ -13,7 +13,6 @@ export interface Download {
   description: string;
   category: DownloadCategory;
   downloadUrl: string;
-  cloudinaryPublicId: string;
   uploadDate: string;
   grades: string[];
 }

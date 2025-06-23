@@ -7,7 +7,6 @@ export interface IDownload extends Document {
   description: string;
   category: DownloadCategory;
   downloadUrl: string;
-  cloudinaryPublicId: string;
   uploadDate: string;
   grades: string[];
 }
@@ -22,7 +21,6 @@ const DownloadSchema: Schema = new Schema({
     required: true,
   },
   downloadUrl: { type: String, required: true },
-  cloudinaryPublicId: { type: String, required: true },
   uploadDate: { type: String, required: true },
   grades: [{ type: String, required: true }],
 });

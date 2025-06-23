@@ -31,6 +31,7 @@ export default function DownloadsPage() {
     category: categoryOptions[0].value,
     grades: [] as string[],
     file: null as File | null,
+    googleDriveLink: "",
   });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -73,19 +74,16 @@ export default function DownloadsPage() {
     setCreateError("");
     setSuccessMessage("");
 
-    if (!formData.file) {
-      setCreateError("Please select a file to upload");
-      setCreating(false);
-      return;
-    }
-
     try {
       const formDataToSend = new FormData();
       formDataToSend.append("title", formData.title);
       formDataToSend.append("description", formData.description);
       formDataToSend.append("category", String(formData.category));
       formDataToSend.append("grades", JSON.stringify(formData.grades));
-      formDataToSend.append("file", formData.file);
+      formDataToSend.append("googleDriveLink", formData.googleDriveLink);
+      if (formData.file) {
+        formDataToSend.append("file", formData.file);
+      }
 
       const response = await fetch("/api/downloads", {
         method: "POST",
@@ -108,6 +106,7 @@ export default function DownloadsPage() {
         category: categoryOptions[0].value,
         grades: [],
         file: null,
+        googleDriveLink: "",
       });
       setShowAddForm(false);
 
@@ -163,36 +162,14 @@ export default function DownloadsPage() {
     setDownloadToDelete(null);
   };
 
-  // Handle download link click - Improved version
+  // Handle download link click - Updated for Google Drive
   const handleDownloadClick = async (id?: string) => {
     if (!id) return;
     const download = downloads.find((d) => d.id === id);
     if (download && download.downloadUrl) {
       try {
-        // For Cloudinary URLs, we need to add transformation parameters for download
-        let downloadUrl = download.downloadUrl;
-
-        // If it's a Cloudinary URL, add download transformation
-        if (downloadUrl.includes("cloudinary.com")) {
-          // Add transformation to force download
-          if (!downloadUrl.includes("fl_attachment")) {
-            downloadUrl = downloadUrl.replace(
-              "/upload/",
-              "/upload/fl_attachment/"
-            );
-          }
-        }
-
-        // Create a temporary link element to trigger download
-        const link = document.createElement("a");
-        link.href = downloadUrl;
-        link.download = `${download.title.replace(/[^a-zA-Z0-9]/g, "_")}.pdf`;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // For Google Drive links, open in new tab
+        window.open(download.downloadUrl, "_blank", "noopener,noreferrer");
       } catch (error) {
         console.error("Download error:", error);
         // Fallback: open in new tab
@@ -305,9 +282,17 @@ export default function DownloadsPage() {
             <FileInput
               label="Upload PDF"
               onChange={handleFileChange}
-              required
               fullWidth
               accept=".pdf"
+            />
+            <Input
+              label="Google Drive Link"
+              value={formData.googleDriveLink}
+              onChange={(e) =>
+                setFormData({ ...formData, googleDriveLink: e.target.value })
+              }
+              placeholder="https://drive.google.com/..."
+              fullWidth
             />
             {createError && (
               <div className="text-red-500 text-center bg-red-50 p-2 rounded">
