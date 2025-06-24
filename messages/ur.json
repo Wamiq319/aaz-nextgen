@@ -64,45 +64,59 @@
       "description": "ہر کلاس لیول کے لیے منفرد تھیمز اور چیلنجز کے ساتھ دلچسپ مقابلے دریافت کریں۔",
       "viewDetails": "تفصیلات دیکھیں",
       "viewAllContests": "تمام مقابلوں کو دیکھیں",
-      "classLevel": "کلاس {level}"
+      "classLevel": "کلاس {level}",
+      "cards": {
+        "sharpness": {
+          "title": "اپنی تیز دھار کا امتحان لیں",
+          "description": "منطق، اعداد اور بصیرت کے ساتھ اپنے ذہن کو چیلنج کریں۔"
+        },
+        "creativity": {
+          "title": "اپنی تخلیقی صلاحیت کو جگائیں",
+          "description": "آرٹ، کہانی سنانے اور ڈیزائن کے ذریعے خیالات کا اظہار کریں۔"
+        },
+        "curiosity": {
+          "title": "اپنی تجسس کو جگائیں",
+          "description": "سائنس، ایمان اور ڈیجیٹل دنیا کی دریافت کریں۔"
+        }
+      }
     },
     "levels": {
       "title": "تعلیمی لیولز",
       "description": "ہمارے احتیاط سے ڈیزائن کیے گئے تعلیمی لیولز دریافت کریں، ہر ایک مختلف تعلیمی مراحل پر طلباء کی پرورش اور چیلنج کے لیے بنایا گیا ہے۔",
       "explore": "لیول دریافت کریں",
       "levels": {
-        "NovaNest": {
-          "name": "نووا نیسٹ",
+        "Sprout": {
+          "name": "سپروٹ",
           "classRange": "I–II",
           "description": "جہاں ستارے چمکنا شروع کرتے ہیں",
           "subDescription": "نوجوان سیکھنے والوں کے لیے ایک نرم اور دلچسپ آغاز"
         },
-        "Ignitia": {
-          "name": "اگنیشیا",
+        "Flare": {
+          "name": "فلیئر",
           "classRange": "III–IV",
           "description": "جہاں ذہن تجسس کو جنم دیتے ہیں",
           "subDescription": "تخیل اور سیکھنے کی شروعات"
         },
-        "LuminaCore": {
-          "name": "لومینا کور",
+        "Glow": {
+          "name": "گلو",
           "classRange": "V–VI",
           "description": "جہاں روشنی منطق سے ملتی ہے",
           "subDescription": "واضحیت، استدلال، اور بنیادی ترقی"
         },
-        "VortexEdge": {
-          "name": "ورٹیکس ایج",
+        "Pulse": {
+          "name": "پلس",
           "classRange": "VII–VIII",
           "description": "جہاں ذہانت تیز ہوتی ہے",
           "subDescription": "متحرک توانائی اور ذہانت کی تیز دھار"
         },
-        "AstraPrime": {
-          "name": "اسٹرا پرائم",
+        "Climb": {
+          "name": "کلائمب",
           "classRange": "IX–X",
           "description": "جہاں ذہانت اپنی انتہا کو پہنچتی ہے",
           "subDescription": "سینئر لیول سیکھنے والوں کے لیے اعلیٰ معیار"
         },
-        "Zenithra": {
-          "name": "زینتھرا",
+        "Summit": {
+          "name": "سمٹ",
           "classRange": "XI–XII",
           "description": "جہاں مہارت قیادت سے ملتی ہے",
           "subDescription": "تعلیمی کامیابی کی انتہا"
@@ -228,12 +242,12 @@
       "title": "ہماری خدمات",
       "levels": {
         "title": "تعلیمی لیولز",
-        "NovaNest": "نووا نیسٹ (I–II)",
-        "Ignitia": "اگنیشیا (III–IV)",
-        "LuminaCore": "لومینا کور (V–VI)",
-        "VortexEdge": "ورٹیکس ایج (VII–VIII)",
-        "AstraPrime": "اسٹرا پرائم (IX–X)",
-        "Zenithra": "زینتھرا (XI–XII)"
+        "Sprout": "سپروٹ (I–II)",
+        "Flare": "فلیئر (III–IV)",
+        "Glow": "گلو (V–VI)",
+        "Pulse": "پلس (VII–VIII)",
+        "Climb": "کلائمب (IX–X)",
+        "Summit": "سمٹ (XI–XII)"
       },
       "contests": {
         "title": "مقابلوں",
@@ -267,38 +281,38 @@
     "title": "تعلیمی لیولز",
     "description": "ہمارے احتیاط سے ڈیزائن کیے گئے تعلیمی لیولز دریافت کریں، ہر ایک مختلف تعلیمی مراحل پر طلباء کی پرورش اور چیلنج کے لیے بنایا گیا ہے۔",
     "levels": {
-      "NovaNest": {
-        "name": "نووا نیسٹ",
+      "Sprout": {
+        "name": "سپروٹ",
         "classRange": "I–II",
         "description": "جہاں ستارے چمکنا شروع کرتے ہیں",
         "subDescription": "نوجوان سیکھنے والوں کے لیے ایک نرم اور دلچسپ آغاز"
       },
-      "Ignitia": {
-        "name": "اگنیشیا",
+      "Flare": {
+        "name": "فلیئر",
         "classRange": "III–IV",
         "description": "جہاں ذہن تجسس کو جنم دیتے ہیں",
         "subDescription": "تخیل اور سیکھنے کی شروعات"
       },
-      "LuminaCore": {
-        "name": "لومینا کور",
+      "Glow": {
+        "name": "گلو",
         "classRange": "V–VI",
         "description": "جہاں روشنی منطق سے ملتی ہے",
         "subDescription": "واضحیت، استدلال، اور بنیادی ترقی"
       },
-      "VortexEdge": {
-        "name": "ورٹیکس ایج",
+      "Pulse": {
+        "name": "پلس",
         "classRange": "VII–VIII",
         "description": "جہاں ذہانت تیز ہوتی ہے",
         "subDescription": "متحرک توانائی اور ذہانت کی تیز دھار"
       },
-      "AstraPrime": {
-        "name": "اسٹرا پرائم",
+      "Climb": {
+        "name": "کلائمب",
         "classRange": "IX–X",
         "description": "جہاں ذہانت اپنی انتہا کو پہنچتی ہے",
         "subDescription": "سینئر لیول سیکھنے والوں کے لیے اعلیٰ معیار"
       },
-      "Zenithra": {
-        "name": "زینتھرا",
+      "Summit": {
+        "name": "سمٹ",
         "classRange": "XI–XII",
         "description": "جہاں مہارت قیادت سے ملتی ہے",
         "subDescription": "تعلیمی کامیابی کی انتہا"

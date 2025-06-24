@@ -28,54 +28,48 @@
         "name": "NoorQuest",
         "shortDesc": "Test your Qur'anic wisdom with NoorQuest.",
         "fullDesc": "NoorQuest is a spiritually enriching contest designed to test students' knowledge of the Qur'an, including memorization, comprehension, and key themes.",
-        "levels": "Available for: Grades I–II & XI–XII",
+        "levels": "Available for: Grades I–XII",
         "format": "MCQs & oral recitation",
-        "awards": "Top scorers win certificates and special Islamic literature bundles.",
         "status": "Registration Open"
       },
       "CodeNova": {
         "name": "CodeNova",
         "shortDesc": "Unleash your inner coder.",
         "fullDesc": "CodeNova challenges students with age-appropriate logical, computational, and programming-based problems, promoting digital fluency.",
-        "levels": "Available for: Grades I–II & V–VI",
+        "levels": "Available for: Grades I–XII",
         "format": "Multiple choice + drag & drop coding",
-        "awards": "Coding kits and scholarships for winners.",
         "status": "Registration Open"
       },
       "NuminaX": {
         "name": "NuminaX",
         "shortDesc": "Crack the code of numbers.",
         "fullDesc": "A mathematics contest designed to challenge critical thinking, logic, and arithmetic fluency across various age levels.",
-        "levels": "Available for: Grades III–IV & VII–VIII",
+        "levels": "Available for: Grades I–XII",
         "format": "MCQs and puzzles",
-        "awards": "Medals and cash prizes for top performers.",
         "status": "Registration Open"
       },
       "NovaMind": {
         "name": "NovaMind",
         "shortDesc": "Explore the frontiers of science.",
         "fullDesc": "NovaMind is a science contest that tests observation, hypothesis building, and analytical thinking in real-world scenarios.",
-        "levels": "Available for: Grades V–VI & IX–X",
+        "levels": "Available for: Grades I–XII",
         "format": "MCQs + practical case-based scenarios",
-        "awards": "Science lab kits & National Science Honor Certificates.",
         "status": "Registration Open"
       },
       "InkspireChronicles": {
         "name": "Inkspire Chronicles",
         "shortDesc": "Where your words create worlds.",
         "fullDesc": "A creative writing contest inviting students to express themselves through stories, essays, and imaginative prose.",
-        "levels": "Available for: Grades III–IV & IX–X",
+        "levels": "Available for: Grades I–XII",
         "format": "Submit original writing based on prompt",
-        "awards": "Publication in AAZ Anthology + writing mentorship",
         "status": "Registration Open"
       },
       "VisionVerse": {
         "name": "VisionVerse",
         "shortDesc": "Paint your vision, shape your verse.",
         "fullDesc": "VisionVerse invites students to express creativity through visual art, exploring themes of innovation, nature, and culture.",
-        "levels": "Available for: Grades VII–VIII & XI–XII",
+        "levels": "Available for: Grades I–XII",
         "format": "Art submissions + theme-based explanation",
-        "awards": "Art supplies and gallery feature",
         "status": "Registration Open"
       }
     }
@@ -84,8 +78,8 @@
     "hero": {
       "intro": {
         "title": "Fueling Ambition BY",
-        "highlight": "Modern Learning.",
-        "description": "We support students and teachers with quality testing services and reliable resources.",
+        "highlight": "Modern Learning",
+        "description": "We support students  with quality testing services and reliable resources.",
         "buttonText": "Explore Contests",
         "slogan": "Evolve · Compete · Conquer"
       },
@@ -124,40 +118,54 @@
       "description": "Discover exciting competitions tailored for every class level with unique themes and challenges.",
       "viewDetails": "View Details",
       "viewAllContests": "View All Contests",
-      "classLevel": "Class {level}"
+      "classLevel": "Class {level}",
+      "cards": {
+        "sharpness": {
+          "title": "Test Your Sharpness",
+          "description": "Challenge your mind with logic, numbers, and insight."
+        },
+        "creativity": {
+          "title": "Unleash Your Creativity",
+          "description": "Express ideas through art, storytelling, and design."
+        },
+        "curiosity": {
+          "title": "Ignite Your Curiosity",
+          "description": "Explore science, faith, and the digital world."
+        }
+      }
     },
     "levels": {
       "title": "Academic Levels",
       "description": "Discover our carefully designed academic levels, each crafted to nurture and challenge students at different stages of their educational journey.",
       "explore": "Explore Level",
       "levels": {
-        "NovaNest": {
-          "name": "NovaNest",
+        "Sprout": {
+          "name": "Sprout",
           "description": "Where stars begin to rise",
           "subDescription": "A gentle and exciting start for young learners"
         },
-        "Ignitia": {
-          "name": "Ignitia",
+        "Flare": {
+          "name": "Flare",
           "description": "Where minds spark curiosity",
           "subDescription": "The ignition of imagination and learning"
         },
-        "LuminaCore": {
-          "name": "LuminaCore",
+        "Glow": {
+          "name": "Glow",
           "description": "Where light meets logic",
           "subDescription": "Clarity, reasoning, and foundational growth"
         },
-        "VortexEdge": {
-          "name": "VortexEdge",
+        "Pulse": {
+          "name": "Pulse",
           "description": "Where intellect accelerates",
           "subDescription": "Dynamic energy and sharpening intelligence"
         },
-        "AstraPrime": {
-          "name": "AstraPrime",
+        "Climb": {
+          "name": "Climb",
           "description": "Where brilliance reaches its apex",
           "subDescription": "Elite excellence for senior level learners"
         },
-        "Zenithra": {
-          "name": "Zenithra",
+        "Summit": {
+          "name": "Summit",
           "description": "Where mastery meets leadership",
           "subDescription": "The pinnacle of academic achievement"
         }
@@ -285,12 +293,12 @@
       "title": "Our Services",
       "levels": {
         "title": "Academic Levels",
-        "NovaNest": "NovaNest (I–II)",
-        "Ignitia": "Ignitia (III–IV)",
-        "LuminaCore": "LuminaCore (V–VI)",
-        "VortexEdge": "VortexEdge (VII–VIII)",
-        "AstraPrime": "AstraPrime (IX–X)",
-        "Zenithra": "Zenithra (XI–XII)"
+        "Sprout": "Sprout (I–II)",
+        "Flare": "Flare (III–IV)",
+        "Glow": "Glow (V–VI)",
+        "Pulse": "Pulse (VII–VIII)",
+        "Climb": "Climb (IX–X)",
+        "Summit": "Summit (XI–XII)"
       },
       "contests": {
         "title": "Contests",
@@ -322,38 +330,38 @@
     "title": "Academic Levels",
     "description": "Discover our carefully designed academic levels, each crafted to nurture and challenge students at different stages of their educational journey.",
     "levels": {
-      "NovaNest": {
-        "name": "NovaNest",
+      "Sprout": {
+        "name": "Sprout",
         "classRange": "I–II",
         "description": "Where stars begin to rise",
         "subDescription": "A gentle and exciting start for young learners"
       },
-      "Ignitia": {
-        "name": "Ignitia",
+      "Flare": {
+        "name": "Flare",
         "classRange": "III–IV",
         "description": "Where minds spark curiosity",
         "subDescription": "The ignition of imagination and learning"
       },
-      "LuminaCore": {
-        "name": "LuminaCore",
+      "Glow": {
+        "name": "Glow",
         "classRange": "V–VI",
         "description": "Where light meets logic",
         "subDescription": "Clarity, reasoning, and foundational growth"
       },
-      "VortexEdge": {
-        "name": "VortexEdge",
+      "Pulse": {
+        "name": "Pulse",
         "classRange": "VII–VIII",
         "description": "Where intellect accelerates",
         "subDescription": "Dynamic energy and sharpening intelligence"
       },
-      "AstraPrime": {
-        "name": "AstraPrime",
+      "Climb": {
+        "name": "Climb",
         "classRange": "IX–X",
         "description": "Where brilliance reaches its apex",
         "subDescription": "Elite excellence for senior level learners"
       },
-      "Zenithra": {
-        "name": "Zenithra",
+      "Summit": {
+        "name": "Summit",
         "classRange": "XI–XII",
         "description": "Where mastery meets leadership",
         "subDescription": "The pinnacle of academic achievement"

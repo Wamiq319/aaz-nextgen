@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { Button } from "../ui/Button";
 import { StatCard } from "../ui/StatCard";
 import Image from "next/image";
 import { getDirection } from "@/lib/direction";
@@ -12,12 +11,12 @@ import {
   Calendar,
   Award,
   FileText,
-  ArrowRight,
-  ArrowLeft,
-  ArrowDown,
   Users,
   MapPin,
   User,
+  BookOpen,
+  Trophy,
+  Download,
 } from "lucide-react";
 
 const slides = [
@@ -25,21 +24,21 @@ const slides = [
     id: 1,
     key: "intro",
     scrollTo: "contests",
-    icon: <Calendar size={18} />,
+    icon: <BookOpen size={24} />,
     image: "/assets/images/hero/hero-intro1.jpeg",
   },
   {
     id: 2,
     key: "results",
     scrollTo: "result",
-    icon: <Award size={18} />,
+    icon: <Trophy size={24} />,
     image: "/assets/images/hero/hero-intro2.jpeg",
   },
   {
     id: 3,
     key: "forms",
     scrollTo: "download",
-    icon: <FileText size={18} />,
+    icon: <Download size={24} />,
     image: "/assets/images/hero/hero-intro3.jpeg",
   },
 ];
@@ -130,18 +129,19 @@ export const HeroSection = () => {
                 <p className="text-lg font-semibold text-[#ff0084] mb-6 tracking-wider">
                   {t(`${slide.key}.slogan`)}
                 </p>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  icon={
-                    <div className="flex gap-1 items-center">{slide.icon}</div>
-                  }
+                <div
                   onClick={() => navigateToPage(slide.scrollTo)}
-                  className="w-full max-w-xs mx-auto bg-[#6B21A8] hover:bg-[#7E3BA8] transition-all duration-300"
+                  className="w-full max-w-xs mx-auto bg-white/20 backdrop-blur-sm border border-white/30 rounded-xl p-4 cursor-pointer hover:bg-white/30 hover:scale-105 transition-all duration-300 group"
                 >
-                  {t(`${slide.key}.buttonText`)}
-                  {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
-                </Button>
+                  <div className="flex items-center justify-center gap-3 text-white">
+                    <div className="p-2 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-300">
+                      {slide.icon}
+                    </div>
+                    <span className="font-semibold text-lg">
+                      {t(`${slide.key}.buttonText`)}
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -163,18 +163,19 @@ export const HeroSection = () => {
                 <p className="text-2xl font-semibold text-[#D63384] mb-6 tracking-wider">
                   {t(`${slide.key}.slogan`)}
                 </p>
-                <Button
-                  variant="primary"
-                  size="lg"
-                  icon={
-                    <div className="flex gap-1 items-center">{slide.icon}</div>
-                  }
+                <div
                   onClick={() => navigateToPage(slide.scrollTo)}
-                  className="bg-[#6B21A8] hover:bg-[#7E3BA8] transition-all duration-300"
+                  className="bg-[#6B21A8] backdrop-blur-sm border border-[#6B21A8]/30 rounded-xl p-4 cursor-pointer hover:bg-[#7E3BA8] hover:scale-105 hover:shadow-lg transition-all duration-300 group"
                 >
-                  {t(`${slide.key}.buttonText`)}
-                  {isRTL ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
-                </Button>
+                  <div className="flex items-center gap-3 text-white">
+                    <div className="p-2 bg-white/20 rounded-lg group-hover:bg-white/30 transition-colors duration-300">
+                      {slide.icon}
+                    </div>
+                    <span className="font-semibold text-lg">
+                      {t(`${slide.key}.buttonText`)}
+                    </span>
+                  </div>
+                </div>
                 <div className="mt-8 grid grid-cols-2 gap-4 w-full max-w-md">
                   <StatCard
                     value={t("stats.students")}

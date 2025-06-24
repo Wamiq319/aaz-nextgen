@@ -43,12 +43,12 @@ export const Footer = () => {
 
   // Levels
   const levels = [
-    { name: "NovaNest", icon: <Star size={16} /> },
-    { name: "Ignitia", icon: <LightbulbIcon size={16} /> },
-    { name: "LuminaCore", icon: <Sun size={16} /> },
-    { name: "VortexEdge", icon: <Zap size={16} /> },
-    { name: "AstraPrime", icon: <Rocket size={16} /> },
-    { name: "Zenithra", icon: <Trophy size={16} /> },
+    { name: "Sprout", icon: <Star size={16} /> },
+    { name: "Flare", icon: <LightbulbIcon size={16} /> },
+    { name: "Glow", icon: <Sun size={16} /> },
+    { name: "Pulse", icon: <Zap size={16} /> },
+    { name: "Climb", icon: <Rocket size={16} /> },
+    { name: "Summit", icon: <Trophy size={16} /> },
   ];
 
   // Contests

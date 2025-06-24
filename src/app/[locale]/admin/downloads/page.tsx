@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 import { ConfirmationModal } from "@/components/ui/ConfirmationModal";
 import { DataCard } from "@/components/ui/DataCard";
+import { DocumentViewer } from "@/components/ui/DocumentViewer";
 import { Pagination } from "@/components/Pagination";
 import { Download, DownloadCategory } from "@/lib/types/downloads";
 
@@ -41,6 +42,11 @@ export default function DownloadsPage() {
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [downloadToDelete, setDownloadToDelete] = useState<string | null>(null);
+  const [showViewer, setShowViewer] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<{
+    url: string;
+    title: string;
+  } | null>(null);
 
   // Fetch downloads on component mount
   useEffect(() => {
@@ -176,6 +182,36 @@ export default function DownloadsPage() {
         window.open(download.downloadUrl, "_blank");
       }
     }
+  };
+
+  // Handle view file
+  const handleView = (downloadUrl: string, title: string) => {
+    // Convert Google Drive link to embeddable format
+    let embedUrl = downloadUrl;
+
+    // If it's a Google Drive link, convert it to embeddable format
+    if (downloadUrl.includes("drive.google.com")) {
+      // Convert sharing link to embeddable link
+      if (downloadUrl.includes("/file/d/")) {
+        const fileId = downloadUrl.match(/\/file\/d\/([a-zA-Z0-9-_]+)/)?.[1];
+        if (fileId) {
+          embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        }
+      } else if (downloadUrl.includes("id=")) {
+        const fileId = downloadUrl.match(/id=([a-zA-Z0-9-_]+)/)?.[1];
+        if (fileId) {
+          embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        }
+      }
+    }
+
+    setSelectedFile({ url: embedUrl, title });
+    setShowViewer(true);
+  };
+
+  const closeViewer = () => {
+    setShowViewer(false);
+    setSelectedFile(null);
   };
 
   return (
@@ -351,9 +387,11 @@ export default function DownloadsPage() {
                     value: download.uploadDate,
                   },
                 ]}
-                primaryButtonText="Download"
-                onPrimaryButtonClick={handleDownloadClick}
-                primaryButtonVariant="outline"
+                primaryButtonText="View"
+                onPrimaryButtonClick={() =>
+                  handleView(download.downloadUrl, download.title)
+                }
+                primaryButtonVariant="primary"
                 primaryButtonSize="sm"
                 secondaryButtonText={
                   deletingId === download.id ? "Deleting..." : "Delete"
@@ -387,6 +425,17 @@ export default function DownloadsPage() {
         onConfirm={confirmDelete}
         onCancel={cancelDelete}
       />
+
+      {/* Document Viewer Modal */}
+      {selectedFile && (
+        <DocumentViewer
+          isOpen={showViewer}
+          onClose={closeViewer}
+          documentUrl={selectedFile.url}
+          documentTitle={selectedFile.title}
+          onDownload={handleDownloadClick}
+        />
+      )}
     </div>
   );
 }

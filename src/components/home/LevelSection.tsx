@@ -16,30 +16,24 @@ import {
 import { LightbulbIcon } from "lucide-react";
 import { getDirection } from "@/lib/direction";
 
-type LevelKey =
-  | "NovaNest"
-  | "Ignitia"
-  | "LuminaCore"
-  | "VortexEdge"
-  | "AstraPrime"
-  | "Zenithra";
+type LevelKey = "Sprout" | "Flare" | "Glow" | "Pulse" | "Climb" | "Summit";
 
 const levelIcons = {
-  NovaNest: <Star size={24} className="animate-bounce" />,
-  Ignitia: <LightbulbIcon size={24} className="animate-bounce" />,
-  LuminaCore: <Sun size={24} className="animate-bounce" />,
-  VortexEdge: <Zap size={24} className="animate-bounce" />,
-  AstraPrime: <Rocket size={24} className="animate-bounce" />,
-  Zenithra: <Trophy size={24} className="animate-bounce" />,
+  Sprout: <Star size={24} className="animate-bounce" />,
+  Flare: <LightbulbIcon size={24} className="animate-bounce" />,
+  Glow: <Sun size={24} className="animate-bounce" />,
+  Pulse: <Zap size={24} className="animate-bounce" />,
+  Climb: <Rocket size={24} className="animate-bounce" />,
+  Summit: <Trophy size={24} className="animate-bounce" />,
 } as const;
 
 const levelColors = {
-  NovaNest: "#F59E0B",
-  Ignitia: "#FCD34D",
-  LuminaCore: "#10B981",
-  VortexEdge: "#8B5CF6",
-  AstraPrime: "#EC4899",
-  Zenithra: "#F97316",
+  Sprout: "#F59E0B",
+  Flare: "#FCD34D",
+  Glow: "#10B981",
+  Pulse: "#8B5CF6",
+  Climb: "#EC4899",
+  Summit: "#F97316",
 } as const;
 
 interface LevelSectionProps {

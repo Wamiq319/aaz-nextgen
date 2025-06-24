@@ -37,14 +37,9 @@ export const ComingSoonPopup = ({ onClose }: ComingSoonPopupProps) => {
           </button>
 
           <div className="space-y-6">
-            <h2 className="text-3xl font-bold text-center">
-              Exciting Things Coming!
-            </h2>
-
             <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10">
               <p className="text-lg leading-relaxed text-center">
-                Thank you for your interest in AAZ Next Gen! We're crafting
-                something extraordinary for you.
+                Registration: Coming Soon
               </p>
             </div>
 

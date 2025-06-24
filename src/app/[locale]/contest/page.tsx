@@ -80,7 +80,6 @@ export default function ContestPage() {
             color={contest.color}
             levels={t(`contests.${contest.name}.levels`)}
             format={t(`contests.${contest.name}.format`)}
-            awards={t(`contests.${contest.name}.awards`)}
             status={t(`contests.${contest.name}.status`)}
             buttonText={t("registerNow")}
             variant="full"

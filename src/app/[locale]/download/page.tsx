@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/Input";
 import { Button } from "@/components/ui/Button";
 import { Loader } from "@/components/ui/Loader";
 import { Dropdown } from "@/components/ui/DropDown";
+import { DocumentViewer } from "@/components/ui/DocumentViewer";
 import { useTranslations } from "next-intl";
 import { Download, DownloadCategory } from "@/lib/types/downloads";
 
@@ -20,6 +21,11 @@ export default function DownloadsPage() {
   const [filteredDownloads, setFilteredDownloads] = useState<Download[]>([]);
   const [isInitialLoading, setIsInitialLoading] = useState(true);
   const [error, setError] = useState("");
+  const [showViewer, setShowViewer] = useState(false);
+  const [selectedFile, setSelectedFile] = useState<{
+    url: string;
+    title: string;
+  } | null>(null);
 
   // Get translations
   const t = useTranslations("DownloadsPage");
@@ -98,9 +104,38 @@ export default function DownloadsPage() {
     setFilteredDownloads(downloads); // Reset to show all downloads
   };
 
+  const handleView = (downloadUrl: string, title: string) => {
+    // Convert Google Drive link to embeddable format
+    let embedUrl = downloadUrl;
+
+    // If it's a Google Drive link, convert it to embeddable format
+    if (downloadUrl.includes("drive.google.com")) {
+      // Convert sharing link to embeddable link
+      if (downloadUrl.includes("/file/d/")) {
+        const fileId = downloadUrl.match(/\/file\/d\/([a-zA-Z0-9-_]+)/)?.[1];
+        if (fileId) {
+          embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        }
+      } else if (downloadUrl.includes("id=")) {
+        const fileId = downloadUrl.match(/id=([a-zA-Z0-9-_]+)/)?.[1];
+        if (fileId) {
+          embedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        }
+      }
+    }
+
+    setSelectedFile({ url: embedUrl, title });
+    setShowViewer(true);
+  };
+
   const handleDownload = (downloadUrl: string, title: string) => {
-    // Open the download URL in a new tab
-    window.open(downloadUrl, "_blank");
+    // Open the original download URL in a new tab for direct download
+    window.open(downloadUrl, "_blank", "noopener,noreferrer");
+  };
+
+  const closeViewer = () => {
+    setShowViewer(false);
+    setSelectedFile(null);
   };
 
   // Show loading state while fetching initial data
@@ -205,12 +240,18 @@ export default function DownloadsPage() {
                   value: new Date(download.uploadDate).toLocaleDateString(),
                 },
               ]}
-              primaryButtonText={t("actions.download")}
+              primaryButtonText="View"
               onPrimaryButtonClick={() =>
-                handleDownload(download.downloadUrl, download.title)
+                handleView(download.downloadUrl, download.title)
               }
               primaryButtonVariant="primary"
               primaryButtonSize="sm"
+              secondaryButtonText="Download"
+              onSecondaryButtonClick={() =>
+                handleDownload(download.downloadUrl, download.title)
+              }
+              secondaryButtonVariant="outline"
+              secondaryButtonSize="sm"
               cardClassName="p-4"
               dataClassName="grid grid-cols-2 md:grid-cols-3 gap-3"
             />
@@ -223,6 +264,17 @@ export default function DownloadsPage() {
         <div className="text-center py-12">
           <p className="text-xl text-gray-600">{t("noResults")}</p>
         </div>
+      )}
+
+      {/* Document Viewer Modal */}
+      {selectedFile && (
+        <DocumentViewer
+          isOpen={showViewer}
+          onClose={closeViewer}
+          documentUrl={selectedFile.url}
+          documentTitle={selectedFile.title}
+          onDownload={handleDownload}
+        />
       )}
     </div>
   );
