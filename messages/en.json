@@ -30,7 +30,7 @@
         "fullDesc": "NoorQuest is a spiritually enriching contest designed to test students' knowledge of the Qur'an, including memorization, comprehension, and key themes.",
         "levels": "Available for: Grades I–XII",
         "format": "MCQs & oral recitation",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       },
       "CodeNova": {
         "name": "CodeNova",
@@ -38,7 +38,7 @@
         "fullDesc": "CodeNova challenges students with age-appropriate logical, computational, and programming-based problems, promoting digital fluency.",
         "levels": "Available for: Grades I–XII",
         "format": "Multiple choice + drag & drop coding",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       },
       "NuminaX": {
         "name": "NuminaX",
@@ -46,7 +46,7 @@
         "fullDesc": "A mathematics contest designed to challenge critical thinking, logic, and arithmetic fluency across various age levels.",
         "levels": "Available for: Grades I–XII",
         "format": "MCQs and puzzles",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       },
       "NovaMind": {
         "name": "NovaMind",
@@ -54,7 +54,7 @@
         "fullDesc": "NovaMind is a science contest that tests observation, hypothesis building, and analytical thinking in real-world scenarios.",
         "levels": "Available for: Grades I–XII",
         "format": "MCQs + practical case-based scenarios",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       },
       "InkspireChronicles": {
         "name": "Inkspire Chronicles",
@@ -62,7 +62,7 @@
         "fullDesc": "A creative writing contest inviting students to express themselves through stories, essays, and imaginative prose.",
         "levels": "Available for: Grades I–XII",
         "format": "Submit original writing based on prompt",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       },
       "VisionVerse": {
         "name": "VisionVerse",
@@ -70,7 +70,7 @@
         "fullDesc": "VisionVerse invites students to express creativity through visual art, exploring themes of innovation, nature, and culture.",
         "levels": "Available for: Grades I–XII",
         "format": "Art submissions + theme-based explanation",
-        "status": "Registration Open"
+        "status": "Registration Now Open for NoorQuest Only. Other contests will be launched soon"
       }
     }
   },
@@ -96,6 +96,13 @@
         "description": "Download test guides and forms to help you register and prepare effectively.",
         "buttonText": "Download Resources",
         "slogan": "Learn · Grow · Succeed"
+      },
+      "contests": {
+        "title": "Unleash Potential Through",
+        "highlight": "Exciting Contests",
+        "description": "From Qur'an quizzes to science, coding, and creative writing—AAZ Next-Gen offers the perfect stage to showcase your talents and win big!",
+        "buttonText": "Discover Contests",
+        "slogan": "Ignite · Showcase · Triumph"
       },
       "stats": {
         "students": "10,000+",
@@ -488,5 +495,19 @@
     "actions": {
       "download": "Download"
     }
+  },
+  "SyllabusSection": {
+    "title": "Syllabus & Sample Papers",
+    "subtitle": "Click on a level to view its contests, syllabus, and downloads.",
+    "levels": {
+      "Sprout": { "name": "Sprout", "gradeRange": "Grades I–II" },
+      "Flare": { "name": "Flare", "gradeRange": "Grades III–IV" },
+      "Glow": { "name": "Glow", "gradeRange": "Grades V–VI" },
+      "Pulse": { "name": "Pulse", "gradeRange": "Grades VII–VIII" },
+      "Climb": { "name": "Climb", "gradeRange": "Grades IX–X" },
+      "Summit": { "name": "Summit", "gradeRange": "Grades XI–XII" }
+    },
+    "samplePaper": "Sample Paper",
+    "answerKey": "Answer Key"
   }
 }

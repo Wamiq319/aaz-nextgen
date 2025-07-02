@@ -48,6 +48,13 @@
         "studentsLabel": "خدمت کر چکے طلباء",
         "provinces": "4+",
         "provincesLabel": "صوبوں تک رسائی"
+      },
+      "contests": {
+        "title": "صلاحیت کو اجاگر کریں",
+        "highlight": "دلچسپ مقابلے",
+        "description": "قرآن کوئزز سے لے کر سائنس، کوڈنگ اور تخلیقی تحریر تک—AAZ Next-Gen آپ کی صلاحیتوں کے اظہار اور بڑی کامیابی کے لیے بہترین اسٹیج فراہم کرتا ہے!",
+        "buttonText": "مقابلے دریافت کریں",
+        "slogan": "جذبہ · اظہار · کامیابی"
       }
     },
     "QuickIntro": {
@@ -509,5 +516,19 @@
     "actions": {
       "download": "ڈاؤن لوڈ کریں"
     }
+  },
+  "SyllabusSection": {
+    "title": "نصاب اور نمونہ پرچے",
+    "subtitle": "کسی بھی لیول پر کلک کریں تاکہ اس کے مقابلے، نصاب اور ڈاؤن لوڈز دیکھیں۔",
+    "levels": {
+      "Sprout": { "name": "سپروٹ", "gradeRange": "گریڈ I–II" },
+      "Flare": { "name": "فلیئر", "gradeRange": "گریڈ III–IV" },
+      "Glow": { "name": "گلو", "gradeRange": "گریڈ V–VI" },
+      "Pulse": { "name": "پلس", "gradeRange": "گریڈ VII–VIII" },
+      "Climb": { "name": "کلائمب", "gradeRange": "گریڈ IX–X" },
+      "Summit": { "name": "سمٹ", "gradeRange": "گریڈ XI–XII" }
+    },
+    "samplePaper": "نمونہ پرچہ",
+    "answerKey": "جواب نامہ"
   }
 }

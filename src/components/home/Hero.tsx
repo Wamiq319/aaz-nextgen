@@ -41,6 +41,13 @@ const slides = [
     icon: <Download size={24} />,
     image: "/assets/images/hero/hero-intro3.jpeg",
   },
+  {
+    id: 4,
+    key: "contests",
+    scrollTo: "download",
+    icon: <Download size={24} />,
+    image: "/assets/images/hero/hero-intro4.jpg",
+  },
 ];
 
 export const HeroSection = () => {
