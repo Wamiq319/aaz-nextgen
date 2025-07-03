@@ -39,7 +39,7 @@ export const ComingSoonPopup = ({ onClose }: ComingSoonPopupProps) => {
           <div className="space-y-6">
             <div className="bg-white/10 p-6 rounded-xl backdrop-blur-sm border border-white/10">
               <p className="text-lg leading-relaxed text-center">
-                Registration: Coming Soon
+                Online Registration: Coming Soon
               </p>
             </div>
 
