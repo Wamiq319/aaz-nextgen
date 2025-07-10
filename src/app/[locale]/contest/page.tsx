@@ -13,6 +13,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { ComingSoonPopup } from "@/components/ui/ComingSoonPopup";
+import { contestImages } from "@/public/assets/index.mjs";
 
 export default function ContestPage() {
   const t = useTranslations("ContestPage");
@@ -26,37 +27,37 @@ export default function ContestPage() {
       name: "NoorQuest",
       icon: <Moon size={24} />,
       color: "#F59E0B",
-      imageUrl: "/assets/images/contest/noorquest.jpeg",
+      imageUrl: contestImages.noorquest,
     },
     {
       name: "CodeNova",
       icon: <Code size={24} />,
       color: "#3B82F6",
-      imageUrl: "/assets/images/contest/codenova.jpeg",
+      imageUrl: contestImages.codenova,
     },
     {
       name: "NuminaX",
       icon: <Divide size={24} />,
       color: "#10B981",
-      imageUrl: "/assets/images/contest/numinax.png",
+      imageUrl: contestImages.numinax,
     },
     {
       name: "InkspireChronicles",
       icon: <PenTool size={24} />,
       color: "#EC4899",
-      imageUrl: "/assets/images/contest/inkspirechronicles.jpeg",
+      imageUrl: contestImages.inkspirechronicles,
     },
     {
       name: "NovaMind",
       icon: <FlaskConical size={24} />,
       color: "#8B5CF6",
-      imageUrl: "/assets/images/contest/novamind.jpeg",
+      imageUrl: contestImages.novamind,
     },
     {
       name: "VisionVerse",
       icon: <Paintbrush size={24} />,
       color: "#F97316",
-      imageUrl: "/assets/images/contest/visionverse.png",
+      imageUrl: contestImages.visionverse,
     },
   ];
 

@@ -57,9 +57,11 @@ export const NoorQuestPopup = ({ onClose }: NoorQuestPopupProps) => {
               <p>
                 <strong>📢 Result Announcement:</strong> September 5, 2025
               </p>
-              <p>
-                <strong>🏆 Prize Distribution:</strong> September 10, 2025
-                <ul className="text-sm text-white/90 space-y-1 text-left list-disc list-inside">
+              <div>
+                <p>
+                  <strong>🏆 Prize Distribution:</strong> September 10, 2025
+                </p>
+                <ul className="text-sm text-white/90 space-y-1 text-left list-disc list-inside mt-2">
                   <li>
                     🎓 Top 3 winners in each level will receive medals and
                     shields
@@ -70,7 +72,7 @@ export const NoorQuestPopup = ({ onClose }: NoorQuestPopupProps) => {
                     🏅 Special awards for schools with highest participation
                   </li>
                 </ul>
-              </p>
+              </div>
             </div>
 
             <div className="flex flex-wrap justify-center gap-4">

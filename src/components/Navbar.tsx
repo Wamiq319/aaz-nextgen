@@ -7,6 +7,7 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import Image from "next/image";
 import { useState } from "react";
 import { getDirection } from "@/lib/direction";
+import { logo } from "@/public/assets/index.mjs";
 
 const NAV_ITEMS = [
   { path: "home", key: "home" },
@@ -46,7 +47,7 @@ export default function Navbar() {
             aria-label={t("home")}
           >
             <Image
-              src="/assets/images/logo.png"
+              src={logo}
               alt={t("home")}
               className="h-10 sm:h-12 md:h-16 w-auto animate-pulse hover:animate-none"
               width={64}

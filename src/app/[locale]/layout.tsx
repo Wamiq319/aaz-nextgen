@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import SessionProvider from "@/components/SessionProvider";
 import "../globals.css";
+import { logo } from "@/public/assets/index.mjs";
 
 export default async function LocaleLayout({
   children,
@@ -30,7 +31,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={direction}>
       <head>
-        <link rel="icon" href="/assets/images/logo.png" type="image/png" />
+        <link rel="icon" href={logo} type="image/png" />
       </head>
       <body className={direction}>
         <SessionProvider>

@@ -6,6 +6,7 @@ import { StatCard } from "../ui/StatCard";
 import Image from "next/image";
 import { getDirection } from "@/lib/direction";
 import { useParams, useRouter } from "next/navigation";
+import { heroImages } from "@/public/assets/index.mjs";
 
 import {
   Calendar,
@@ -25,28 +26,28 @@ const slides = [
     key: "intro",
     scrollTo: "contests",
     icon: <BookOpen size={24} />,
-    image: "/assets/images/hero/hero-intro1.jpeg",
+    image: heroImages.intro1,
   },
   {
     id: 2,
     key: "results",
     scrollTo: "result",
     icon: <Trophy size={24} />,
-    image: "/assets/images/hero/hero-intro2.jpeg",
+    image: heroImages.intro2,
   },
   {
     id: 3,
     key: "forms",
     scrollTo: "download",
     icon: <Download size={24} />,
-    image: "/assets/images/hero/hero-intro3.jpeg",
+    image: heroImages.intro3,
   },
   {
     id: 4,
     key: "contests",
     scrollTo: "download",
     icon: <Download size={24} />,
-    image: "/assets/images/hero/hero-intro4.jpg",
+    image: heroImages.intro4,
   },
 ];
 
