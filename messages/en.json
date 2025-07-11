@@ -413,7 +413,8 @@
   "ResultsPage": {
     "title": "Results",
     "search": {
-      "placeholder": "Search by roll number or name...",
+      "placeholder": "Search by event name",
+      "rollPlaceholder": "Search by roll number",
       "button": "Search",
       "clear": "Clear"
     },

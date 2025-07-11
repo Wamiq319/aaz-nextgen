@@ -183,7 +183,7 @@ export default function EventResultsPage() {
         <div className="flex-1 w-full md:w-auto">
           <Input
             type="text"
-            placeholder={t("search.placeholder")}
+            placeholder={t("search.rollPlaceholder")}
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             fullWidth

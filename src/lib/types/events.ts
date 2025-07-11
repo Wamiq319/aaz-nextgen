@@ -11,6 +11,8 @@ export enum EventCategory {
   Geography = "Geography",
   Physics = "Physics",
   Chemistry = "Chemistry",
+  Quran = "Quran & Islamic Studies",
+  IslamicStudies = "Islamic Studies",
 }
 
 export interface Event {
